@@ -16,6 +16,19 @@ router.post('/sellersignup',(req,res)=>{
     console.log('data inserted');
   })
 })
+router.post('/sellerlogin',(req,res)=>{
+  console.log(req.body);
+  sellerHelpers.sellerLogin(req.body).then((response)=>{
+    if(response.status){
+      req.session.loggedIn=true
+      req.session.seller=response.seller
+      console.log(req.session.seller);
+      res.render('seller/create-brands')
+    }else{
+      res.render('seller/seller-login')
+    }
+  })
+})
 
 
 
