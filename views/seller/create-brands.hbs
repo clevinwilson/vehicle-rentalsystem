@@ -1,21 +1,20 @@
 
 <div>
-    <h2 class="text-center mt-5"> Manage Brands</h2>
+    <h2 class="text-center mt-3"> Manage Brands</h2>
 </div>
 <section>
     <div class="container">
         <div class="row mt-5">
             <div class=" col-12 col-md-12">
-                <div class="pb-5 my-auto text-center">
-                    <a class="btn btn-success" style="color: white;">Create Brands</a>
-                    <a class="ml-5 btn btn-danger" style="color: white;">Manage Brands</a>
+                <div class="pb-3 my-auto text-center">
+                    <a class="btn btn-success" href="/seller/create-brands" style="color: white;">Create Brands</a>
+                    <a class="ml-5 btn btn-danger" href="/seller/manage-brands" style="color: white;">Manage Brands</a>
                 </div>
-              
+              {{#if smess}}
                 <div>
-                    <span style="color: tomato;"><b>{{smess.mess}}</b><br></span><br>
+                    <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
                 </div>
-           
-           
+                {{/if}}
                 <form action="/seller/add-brands" method="POST" class="p-4"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">

@@ -24,6 +24,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/seller/create-brands">Brands</a>
                 </li>
+                 <li class="nav-item active">
+                    <a class="nav-link" href="/seller/add-vehicle">Vehicles</a>
+                </li>
 
                 <li class="nav-item active">
                     <a class="dropdown-item" href="/cart">My Cart  <span class="badge badge-success"id="cart-count">{{cartCount}}</span></a>
@@ -37,9 +40,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Edit Profile</a>
-                    <a class="dropdown-item" href="/cart">My Cart <span class="badge badge-success" >{{cartCount}}</span></a>
-                    <a class="dropdown-item" href="/orders">My orders</a>
-                    <a class="dropdown-item" href="/userlogout">Logout</a>
+                    <a class="dropdown-item" href="/seller/sellerlogout">Logout</a>
                 </div>
             </div>
             {{else}}

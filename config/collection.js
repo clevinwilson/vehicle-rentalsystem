@@ -1,4 +1,4 @@
 module.exports={
     SELLER_COLLECTION:'seller',
-    VEHICLE_BRANDS:'brands'
+    BRANDS_COLLECTION:'brands'
 }

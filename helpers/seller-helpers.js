@@ -41,13 +41,13 @@ module.exports={
       
         return new Promise(async(resolve,reject)=>{
             let isExist={}
-            let isBrandExist = await db.get().collection(collection.VEHICLE_BRANDS).findOne({brandname:brand.brandname})
+            let isBrandExist = await db.get().collection(collection.BRANDS_COLLECTION).findOne({brandname:brand.brandname})
             if(isBrandExist){
                 isExist.status=true
                 resolve(isExist)
             }else{
                 console.log('hello');
-                db.get().collection(collection.VEHICLE_BRANDS).insertOne(brand).then((response)=>{
+                db.get().collection(collection.BRANDS_COLLECTION).insertOne(brand).then((response)=>{
                     isExist.status=false
                     resolve(isExist)
                 })

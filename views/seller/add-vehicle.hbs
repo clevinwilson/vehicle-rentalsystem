@@ -1,0 +1,226 @@
+<div>
+    <h2 class="text-center mt-3"> Manage Vehicles</h2>
+</div>
+<section>
+    <div class="container">
+        <div class="row mt-4">
+            <div class=" col-12 col-md-12">
+                <div class="pb-2 my-auto text-center">
+                    <a class="btn btn-success" href="/seller/add-vehicle" style="color: white;">Create Vehicles</a>
+                    <a class="ml-5 btn btn-danger" href="/seller/manage-brands" style="color: white;">Manage
+                        Vehicles</a>
+                </div>
+                {{#if smess}}
+                <div>
+                    <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
+                </div>
+                {{/if}}
+                <form action="/seller/add-vehicle" method="POST" class="p-4 mt-4"
+                    style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Post a Vehicle</b></p>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="form-group col-md-7 ">
+                            <label for="brandname">Vehicle Name</label>
+                            <input type="text" class="form-control " id="vehiclename" name="vehiclename"
+                                placeholder="Vehicle Name">
+                        </div>
+                        <div class="form-group col-12 col-md-5 ">
+                            <label for="cars">Fuel type</label><br>
+                            <select 
+                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id="fueltype" name="cars">
+                                <option style="font-size: 14px;" value="">Select</option>
+                                <option style="font-size: 14px;" value="petrol">Petrol</option>
+                                <option style="font-size: 14px;" value="diesel">Diesel</option>
+                                <option style="font-size: 14px;" value="electric">Electric</option>
+                                <option style="font-size: 14px;" value="cng">CNG</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-md-12 mt-1 ">
+                            <label for="vehicleoverview">Vehicle Overview</label>
+                            <textarea type="text" class="form-control " id="vehicleoverview" name="vehicleoverview"
+                                placeholder="Overview"></textarea>
+                        </div>
+                        <div class="form-group col-md-7 ">
+                            <label for="priceperday">Price Per day</label>
+                            <input type="text" class="form-control " id="priceperday" name="priceperday"
+                                placeholder="Price Per day">
+                        </div>
+                        <div class="form-group col-12 col-md-5 ">
+                            <label for="cars">Vehicle Type</label><br>
+                            <select 
+                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id="vehicletype" name="cars">
+                                <option style="font-size: 14px;" value="">Select</option>
+                                <option style="font-size: 14px;" value="petrol">Petrol</option>
+                                <option style="font-size: 14px;" value="diesel">Diesel</option>
+                                <option style="font-size: 14px;" value="electric">Electric</option>
+                                <option style="font-size: 14px;" value="cng">CNG</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-md-7 mt-1 ">
+                            <label for="modelyear">Model year</label>
+                            <input type="text" class="form-control " id="modelyear" name="modelyear"
+                                placeholder="Model year">
+                        </div>
+                        <div class="form-group col-md-5 ">
+                            <label for="seatingcapacity">Seating Capacity</label>
+                            <input type="text" class="form-control " id="seatingcapacity" name="seatingcapacity"
+                                placeholder="Seating Capacity">
+                        </div>
+                        <div class="form-group  col-md-7 ">
+                            <label for="busdriver">Bus Driver</label><br>
+                            <select 
+                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id="busdriver" name="cars">
+                                <option style="  font-size: 14px;" value="">Select</option>
+                                <option style="font-size: 14px;" value="petrol">Petrol</option>
+                                <option style="font-size: 14px;" value="diesel">Diesel</option>
+                                <option style="font-size: 14px;" value="electric">Electric</option>
+                                <option style="font-size: 14px;" value="cng">CNG</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group  col-md-5 ">
+                            <label for="cartype">Car Type</label><br>
+                            <select
+                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id="cartype" name="cars">
+                                <option style="font-size: 14px;" value="">Select</option>
+                                <option style="font-size: 14px;" value="petrol">Petrol</option>
+                                <option style="font-size: 14px;" value="diesel">Diesel</option>
+                                <option style="font-size: 14px;" value="electric">Electric</option>
+                                <option style="font-size: 14px;" value="cng">CNG</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Upload Images</b></p>
+                    </div>
+                    <div class="row p-3">
+                        <div class="form-group col-md-4">
+                            <label>Image 1</label>
+                            <input type="file" class="form-control" name="Image1">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Image 2</label>
+                            <input type="file" class="form-control" name="Image2">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Image 3</label>
+                            <input type="file" class="form-control" name="Image3">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Image 4</label>
+                            <input type="file" class="form-control" name="Image4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Image 5</label>
+                            <input type="file" class="form-control" name="Image5">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Accessories</b></p>
+                    </div>
+                    <div class="row mt-3 p-3">
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="autoairconditioner" name="autoairconditioner" value="1">
+                                <label for="autoairconditioner">Automatic Air Conditioner </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="panoramicsunroof" name="panoramicsunroof" value="1">
+                                <label for="panoramicsunroof"> Panoramic sunroof </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1">
+                                <label for="antilockbrakingsys"> AntiLock Braking System </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="brakeassist" name="brakeassist" value="1">
+                                <label for="brakeassist"> Brake Assist </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="autopilot" name="autopilot" value="1">
+                                <label for="autopilot">Autopilot </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="driverairbag" name="driverairbag" value="1">
+                                <label for="driverairbag">Driver Airbag</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="passengerairbag" name="passengerairbag" value="1">
+                                <label for="passengerairbag"> Passenger Airbag </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
+                                <label for="powerwindow"> Power Windows </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="touchscreenmultimedia" name="touchscreenmultimedia"
+                                    value="1">
+                                <label for="touchscreenmultimedia">Touch Screen Multimedia </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox h checkbox-inline">
+                                <input type="checkbox" id="centrallocking" name="centrallocking" value="1">
+                                <label for="centrallocking">Central Locking</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="crashcensor" name="crashcensor" value="1">
+                                <label for="crashcensor"> Crash Sensor </label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="leatherseats" name="leatherseats" value="1">
+                                <label for="leatherseats"> Leather Seats </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <hr>
+                    <center><button type="submit" class="btn btn-primary mr-auto ">Submit</button></center>
+                    <div class="listing-title">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
