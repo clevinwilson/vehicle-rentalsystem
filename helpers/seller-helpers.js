@@ -36,5 +36,23 @@ module.exports={
                 console.log('user name exist');
             }
         })
+    },
+    createBrand:(brand)=>{
+      
+        return new Promise(async(resolve,reject)=>{
+            let isExist={}
+            let isBrandExist = await db.get().collection(collection.VEHICLE_BRANDS).findOne({brandname:brand.brandname})
+            if(isBrandExist){
+                isExist.status=true
+                resolve(isExist)
+            }else{
+                console.log('hello');
+                db.get().collection(collection.VEHICLE_BRANDS).insertOne(brand).then((response)=>{
+                    isExist.status=false
+                    resolve(isExist)
+                })
+            }
+            
+        })
     }
 }

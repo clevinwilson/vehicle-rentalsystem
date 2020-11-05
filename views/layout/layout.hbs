@@ -10,8 +10,10 @@
 
     <title>dream haulage | seller login</title>
   </head>
-  <body>
-  
+  <body style="background-color: #f3f3f3;">
+    {{#if seller}}
+    {{>seller-header}}
+    {{/if}}
     {{{body}}}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

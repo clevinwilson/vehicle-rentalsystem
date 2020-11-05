@@ -1,28 +1,34 @@
-{{>seller-header}}
+
 <div>
-    <h2 class="text-center mt-5">Create Brands</h2>
+    <h2 class="text-center mt-5"> Manage Brands</h2>
 </div>
 <section>
     <div class="container">
         <div class="row mt-5">
             <div class=" col-12 col-md-12">
-
-                <form action="/seller/add-vehicle" method="POST" enctype="multipart/form-data" class="p-4"
+                <div class="pb-5 my-auto text-center">
+                    <a class="btn btn-success" style="color: white;">Create Brands</a>
+                    <a class="ml-5 btn btn-danger" style="color: white;">Manage Brands</a>
+                </div>
+              
+                <div>
+                    <span style="color: tomato;"><b>{{smess.mess}}</b><br></span><br>
+                </div>
+           
+           
+                <form action="/seller/add-brands" method="POST" class="p-4"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
-                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter the brands name that awailable</b></p>
-
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter the brands name that
+                                available</b></p>
                     </div>
-
-
-
                     <div class="form-group mt-5">
                         <label for="brandname">Brand Name</label>
                         <input type="text" class="form-control col-md-12 mt-2" id="brandname" name="brandname"
                             placeholder="Brand Name">
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary mr-auto">Submit</button>
+                    <button type="submit"  class="btn btn-primary mr-auto">Submit</button>
                     <div class="listing-title">
 
                 </form>
