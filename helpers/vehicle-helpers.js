@@ -5,10 +5,10 @@ const { response } = require('express')
 var objectId=require('mongodb').ObjectID
 
 module.exports={
-    getBrands:()=>{
+    getfuel:()=>{
         return new Promise(async(resolve,reject)=>{
-           let brands = await db.get().collection(collection.BRANDS_COLLECTION).find().toArray()
-           resolve(brands)
+           let fuel = await db.get().collection(collection.FUEL_COLLECTION).find().toArray()
+           resolve(fuel)
         })
     },
     addVehicles:(details,img1,img2,img3,img4,img5)=>{

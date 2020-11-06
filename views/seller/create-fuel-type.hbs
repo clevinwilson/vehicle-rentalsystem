@@ -1,30 +1,29 @@
 
 <div>
-    <h2 class="text-center mt-3"> Manage Brands</h2>
+    <h2 class="text-center mt-3"> Manage Fuel type</h2>
 </div>
 <section>
     <div class="container">
         <div class="row mt-5">
             <div class=" col-12 col-md-12">
                 <div class="pb-3 my-auto text-center">
-                    <a class="btn btn-success" href="/seller/create-brands" style="color: white;">Create Brands</a>
-                    <a class="ml-5 btn btn-danger" href="/seller/manage-brands" style="color: white;">Manage Brands</a>
+                    <a class="btn btn-success" href="/seller/create-fule-type" style="color: white;">Create Fuel type</a>
+                    <a class="ml-5 btn btn-danger" href="/seller/manage-fueltype" style="color: white;">Manage Fuel type</a>
                 </div>
               {{#if smess}}
                 <div>
                     <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
                 </div>
                 {{/if}}
-                <form action="/seller/add-brands" method="POST" class="p-4"
+                <form action="/seller/add-fuel" method="POST" class="p-4"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
-                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter the brands name that
-                                available</b></p>
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter the Fuel type</b></p>
                     </div>
                     <div class="form-group mt-5">
-                        <label for="brandname">Brand Name</label>
-                        <input type="text" class="form-control col-md-12 mt-2" id="brandname" name="brandname"
-                            placeholder="Brand Name">
+                        <label for="fuelname">Fuel type</label>
+                        <input type="text" class="form-control col-md-12 mt-2" id="fuelname" name="fuelname"
+                            placeholder="Fuel">
                     </div>
                     <br>
                     <button type="submit"  class="btn btn-primary mr-auto">Submit</button>

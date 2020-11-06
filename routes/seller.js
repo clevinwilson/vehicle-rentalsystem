@@ -37,25 +37,25 @@ router.post('/sellerlogin', (req, res) => {
   })
 })
 let smess = {}
-router.get('/create-brands', verifyLogin, (req, res) => {
+router.get('/create-fuel-type', verifyLogin, (req, res) => {
   let seller = req.session.seller
 
-  res.render('seller/create-brands', { seller, smess })
+  res.render('seller/create-fuel-type', { seller, smess })
 
 
 })
 
-router.post('/add-brands', verifyLogin, (req, res) => {
+router.post('/add-fuel', verifyLogin, (req, res) => {
 
-  sellerHelpers.createBrand(req.body).then((response) => {
+  sellerHelpers.createFuel(req.body).then((response) => {
     console.log(response)
     if (response.status) {
       smess.mess = "Alredy Exist"
     } else {
-      smess.mess = "Brand added successfully"
+      smess.mess = "Fuel type added successfully"
     }
 
-    res.redirect('/seller/create-brands')
+    res.redirect('/seller/create-fuel-type')
   })
 })
 
@@ -64,11 +64,10 @@ router.get('/sellerlogout', (req, res) => {
   res.redirect('/seller')
 })
 
-router.get('/manage-brands', verifyLogin, (req, res) => {
+router.get('/manage-fueltype', verifyLogin, (req, res) => {
   let seller = req.session.seller
-  vehicleHelpers.getBrands().then((brands) => {
-    console.log(brands);
-    res.render('seller/manage-brands', { seller, brands })
+  vehicleHelpers.getfuel().then((fuel) => {
+    res.render('seller/manage-fueltype', { seller, fuel })
   })
 
 })
@@ -76,9 +75,8 @@ router.get('/manage-brands', verifyLogin, (req, res) => {
 
 router.get('/add-vehicle', verifyLogin, (req, res) => {
   let seller = req.session.seller
-  vehicleHelpers.getBrands().then((brands) => {
-    console.log(brands);
-    res.render('seller/add-vehicle', { seller, brands })
+  vehicleHelpers.getfuel().then((fuel) => {
+    res.render('seller/add-vehicle', { seller, fuel })
   })
 })
 
