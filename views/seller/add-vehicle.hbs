@@ -15,7 +15,7 @@
                     <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
                 </div>
                 {{/if}}
-                <form action="/seller/add-vehicle" method="POST" class="p-4 mt-4"
+                <form action="/seller/add-vehicle" method="POST" class="p-4 mt-4" enctype="multipart/form-data"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
                         <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Post a Vehicle</b></p>
@@ -27,15 +27,14 @@
                                 placeholder="Vehicle Name">
                         </div>
                         <div class="form-group col-12 col-md-5 ">
-                            <label for="cars">Fuel type</label><br>
+                            <label for="cars">Select Brand</Select></label><br>
                             <select 
                                 style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="fueltype" name="cars">
+                                id="fueltype" name="fueltype">
                                 <option style="font-size: 14px;" value="">Select</option>
-                                <option style="font-size: 14px;" value="petrol">Petrol</option>
-                                <option style="font-size: 14px;" value="diesel">Diesel</option>
-                                <option style="font-size: 14px;" value="electric">Electric</option>
-                                <option style="font-size: 14px;" value="cng">CNG</option>
+                                {{#each brands}}
+                                <option style="font-size: 14px;" value="petrol">{{this.brandname}}</option>
+                                {{/each}}
                             </select>
 
                         </div>
@@ -53,7 +52,7 @@
                             <label for="cars">Vehicle Type</label><br>
                             <select 
                                 style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="vehicletype" name="cars">
+                                id="vehicletype" name="vehicletype">
                                 <option style="font-size: 14px;" value="">Select</option>
                                 <option style="font-size: 14px;" value="petrol">Petrol</option>
                                 <option style="font-size: 14px;" value="diesel">Diesel</option>
@@ -76,7 +75,7 @@
                             <label for="busdriver">Bus Driver</label><br>
                             <select 
                                 style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="busdriver" name="cars">
+                                id="busdriver" name="busdriver">
                                 <option style="  font-size: 14px;" value="">Select</option>
                                 <option style="font-size: 14px;" value="petrol">Petrol</option>
                                 <option style="font-size: 14px;" value="diesel">Diesel</option>
@@ -89,7 +88,7 @@
                             <label for="cartype">Car Type</label><br>
                             <select
                                 style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="cartype" name="cars">
+                                id="cartype" name="cartype">
                                 <option style="font-size: 14px;" value="">Select</option>
                                 <option style="font-size: 14px;" value="petrol">Petrol</option>
                                 <option style="font-size: 14px;" value="diesel">Diesel</option>
@@ -106,7 +105,7 @@
                     <div class="row p-3">
                         <div class="form-group col-md-4">
                             <label>Image 1</label>
-                            <input type="file" class="form-control" name="Image1">
+                            <input  type="file" class="form-control" name="Image1">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Image 2</label>
