@@ -21,61 +21,52 @@
                         <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Post a Vehicle</b></p>
                     </div>
                     <div class="row mt-5">
-                        <div class="form-group col-md-7 ">
-                            <label for="brandname">Vehicle Name</label>
-                            <input type="text" class="form-control " id="vehiclename" name="vehiclename"
+                        <div class="form-group col-md-6 ">
+                            <label for="vehiclename">Vehicle Name</label>
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="vehiclename" name="vehiclename"
                                 placeholder="Vehicle Name">
                         </div>
-                        <div class="form-group col-12 col-md-5 ">
-                            <label for="cars">Se</label><br>
-                            <select 
-                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="fueltype" name="fueltype">
-                                <option style="font-size: 14px;" value="">Select</option>
-                                <option style="font-size: 14px;" value="petrol">Petrol</option>
-                                <option style="font-size: 14px;" value="diesel">Diesel</option>
-                                <option style="font-size: 14px;" value="electric">Electric</option>
-                                <option style="font-size: 14px;" value="cng">CNG</option>
-                            </select>
-
+                        <div class="form-group col-md-6 ">
+                            <label for="brandname">Brand Name</label>
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="brandname" name="brandname"
+                                placeholder="Brand Name">
                         </div>
                         <div class="form-group col-md-12 mt-1 ">
                             <label for="vehicleoverview">Vehicle Overview</label>
-                            <textarea type="text" class="form-control " id="vehicleoverview" name="vehicleoverview"
+                            <textarea style="border-color:#b4e3eb;" type="text" class="form-control " id="vehicleoverview" name="vehicleoverview"
                                 placeholder="Overview"></textarea>
                         </div>
                         <div class="form-group col-md-7 ">
                             <label for="priceperday">Price Per day</label>
-                            <input type="text" class="form-control " id="priceperday" name="priceperday"
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="priceperday" name="priceperday"
                                 placeholder="Price Per day">
                         </div>
                         <div class="form-group col-12 col-md-5 ">
-                            <label for="cars">Vehicle Type</label><br>
+                            <label for="cars">Fuel type</label><br>
                             <select 
-                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                style="color: #fff;background-color:#3cc0d3;border-color: #36b9cc;border-radius: 3px;font-size: 17px;padding: 6px;"
                                 id="vehicletype" name="vehicletype">
                                 <option style="font-size: 14px;" value="">Select</option>
-                                <option style="font-size: 14px;" value="petrol">Petrol</option>
-                                <option style="font-size: 14px;" value="diesel">Diesel</option>
-                                <option style="font-size: 14px;" value="electric">Electric</option>
-                                <option style="font-size: 14px;" value="cng">CNG</option>
+                                {{#each fuel}}
+                                <option style="font-size: 14px;" value="petrol">{{this.fuelname}}</option>
+                                {{/each}}
                             </select>
 
                         </div>
                         <div class="form-group col-md-7 mt-1 ">
                             <label for="modelyear">Model year</label>
-                            <input type="text" class="form-control " id="modelyear" name="modelyear"
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="modelyear" name="modelyear"
                                 placeholder="Model year">
                         </div>
                         <div class="form-group col-md-5 ">
                             <label for="seatingcapacity">Seating Capacity</label>
-                            <input type="text" class="form-control " id="seatingcapacity" name="seatingcapacity"
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="seatingcapacity" name="seatingcapacity"
                                 placeholder="Seating Capacity">
                         </div>
                         <div class="form-group  col-md-7 ">
                             <label for="busdriver">Bus Driver</label><br>
                             <select 
-                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                style="color: #fff;background-color: #f6c23e;border-color: #f6c23e;border-radius: 3px;font-size: 17px;padding: 6px;"
                                 id="busdriver" name="busdriver">
                                 <option style="  font-size: 14px;" value="">Select</option>
                                 <option style="font-size: 14px;" value="petrol">Petrol</option>
@@ -99,7 +90,7 @@
 
                         </div>
                     </div>
-                    <hr>
+                    <hr style="background-color: #36b9cc;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
                         <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Upload Images</b></p>
                     </div>
@@ -138,7 +129,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
-                                <input type="checkbox" id="panoramicsunroof" name="panoramicsunroof" value="1">
+                                <input  type="checkbox" id="panoramicsunroof" name="panoramicsunroof" value="1">
                                 <label for="panoramicsunroof"> Panoramic sunroof </label>
                             </div>
                         </div>
@@ -216,7 +207,7 @@
                     </div>
                     <br>
                     <hr>
-                    <center><button type="submit" class="btn btn-primary mr-auto ">Submit</button></center>
+                    <center><button type="submit" class="btn btn-primary">Submit</button></center>
                     <div class="listing-title">
 
                 </form>

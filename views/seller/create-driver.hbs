@@ -1,0 +1,58 @@
+<div>
+    <h2 class="text-center mt-3"> Manage Driver</h2>
+</div>
+<section class="mb-3">
+    <div class="container">
+        <div class="row mt-4">
+            <div class=" col-12 col-md-12">
+                <div class="pb-3 my-auto text-center">
+                    <a class="btn btn-success" href="/seller/driver" style="color: white;">Create Driver</a>
+                    <a class="ml-5 btn btn-danger" href="/seller/manage-fueltype" style="color: white;">Manage
+                        Driver</a>
+                </div>
+                {{#if smess}}
+                <div>
+                    <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
+                </div>
+                {{/if}}
+                <form action="/seller/add-driver" method="POST" class="p-4"
+                    style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter Driver details</b></p>
+                    </div>
+                    <div class="row">
+                        <div class="form-group mt-2 col-md-6">
+                            <label for="drivername">Driver Name</label>
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control col-md-12 mt-2" id="drivername" name="drivername"
+                                placeholder="Driver Name">
+                        </div>
+                        <div class="form-group mt-2 col-md-6">
+                            <label for="driveremail">Driver Email</label>
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control col-md-12 mt-2" id="driveremail" name="driveremail"
+                                placeholder="Driver Email">
+                        </div>
+                        <div class="form-group mt-2 col-md-6">
+                            <label for="driverphone">Driver Phone.No</label>
+                            <input style="border-color:#b4e3eb;" type="number" class="form-control col-md-12 mt-2" id="driverphone" name="driverphone"
+                                placeholder="Driver Phone.No">
+                        </div>
+                        <div class="form-group mt-2 col-md-6">
+                            <label for="driverlicense">Driver License No</label>
+                            <input style="border-color:#b4e3eb;" type="text" class="form-control col-md-12 mt-2" id="driverlicense" name="driverlicense"
+                                placeholder="Driver License No">
+                        </div>
+                        <div class="form-group mt-2 col-md-12">
+                            <label for="driveraddress">Driver Address</label>
+                            <textarea style="border-color:#b4e3eb;" type="text" class="form-control col-md-12 mt-2" id="driveraddress" name="driveraddress"
+                                placeholder="Driver Address"></textarea>
+                        </div>
+                        
+                        </div>
+                       <center><button  type="submit" class="btn btn-primary mt-3">Submit</button></center>
+                        <div class="listing-title">
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

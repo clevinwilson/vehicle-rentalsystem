@@ -73,11 +73,12 @@ router.get('/manage-fueltype', verifyLogin, (req, res) => {
 })
 
 
-router.get('/add-vehicle', verifyLogin, (req, res) => {
+router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
-  vehicleHelpers.getfuel().then((fuel) => {
+  let fuel= await vehicleHelpers.getfuel()
+  console.log(fuel);
     res.render('seller/add-vehicle', { seller, fuel })
-  })
+
 })
 
 
@@ -135,6 +136,19 @@ router.post('/add-vehicle', (req, res) => {
     })
   })
   res.redirect('/seller/add-vehicle')
+})
+router.get('/driver',verifyLogin,(req,res)=>{
+  let seller = req.session.seller
+  res.render('seller/create-driver',{seller})
+})
+
+router.post('/add-driver',verifyLogin,(req,res)=>{
+  console.log(req.body);
+  sellerHelpers.adddriver(req.body).then((response)=>{
+
+  })
+  smess.mess = "Driver created successfully"
+  res.redirect('/seller/driver')
 })
 
 

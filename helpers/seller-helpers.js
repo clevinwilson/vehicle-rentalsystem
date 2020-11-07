@@ -46,13 +46,19 @@ module.exports={
                 isExist.status=true
                 resolve(isExist)
             }else{
-                console.log('hello');
                 db.get().collection(collection.FUEL_COLLECTION).insertOne(fuel).then((response)=>{
                     isExist.status=false
                     resolve(isExist)
                 })
             }
             
+        })
+    },
+    adddriver:(driverdetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.DRIVER_COLLECTION).insertOne(driverdetails).then((response)=>{
+                resolve(response)
+            })
         })
     }
 }
