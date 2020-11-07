@@ -50,26 +50,26 @@
         </ul>
       </div> -->
       <!-- Recently Listed New Cars -->
-      <div class="tab-content">
+      <div class="tab-content" style="width: 10000px;">
         <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
 
 {{#each vehicles}}
 <div class="col-list-3">
-<div class="recent-car-list">
-<div class="car-info-box"> <a href=""><img src="/public/vehicle-images/5fa545b2758f881ef452fa631.jpg" class="img-responsive" alt="image"></a>
+<div class="recent-car-list" style="height: 345px;">
+<div class="car-info-box"> <a href=""><img src="/vehicle-images/{{this._id}}{{this.img1}}"  style="    height: 209px;" class="img-responsive" alt="image"></a>
 <ul>
 <li><i class="fa fa-car" aria-hidden="true"></i>{{this.fueltype}}</li>
-<li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?> Model</li>
-<li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> seats</li>
+<li><i class="fa fa-calendar" aria-hidden="true"></i>{{this.modelyear}} </li>
+<li><i class="fa fa-user" aria-hidden="true"></i> {{this.seatingcapacity}}</li>
 </ul>
 </div>
 <div class="car-title-m">
-<h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></a></h6>
-<span class="price">₹<?php echo htmlentities($result->PricePerDay);?> /Day</span> 
+<h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">{{this.brandname}},{{this.vehiclename}}</a></h6>
+<span class="price">₹{{this.priceperday}} /Day</span> 
 </div>
 <div class="inventory_info_m">
-<p><?php echo substr($result->VehiclesOverview,0,70);?></p>
+<p>{{this.vehicleoverview}}</p>
 </div>
 </div>
 </div>
