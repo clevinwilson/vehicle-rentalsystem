@@ -13,6 +13,7 @@ module.exports={
     doSignup:(userdetails)=>{
         let isExist={}
         return new Promise(async(resolve,reject)=>{
+            userdetails.password=await bcrypt.hash(userdetails.password,10)
             let userExist=await db.get().collection(collection.USER_COLLECTION).findOne({name:userdetails.name})
             console.log(userExist);
             if(userExist){
@@ -36,6 +37,30 @@ module.exports={
             }else{
                 isExist=false
                 resolve(isExist)
+            }
+        })
+    },
+    userLogin:(userloginDetails)=>{
+        return new Promise(async(resolve,reject)=>{
+            let loginStatus=false
+            let response={}
+            let user=await db.get().collection(collection.USER_COLLECTION).findOne({name:userloginDetails.name})
+            console.log(user);
+            if(user){
+             bcrypt.compare(userloginDetails.password,user.password).then((status)=>{
+                if(status){
+                    console.log('Login success');
+                    response.user=user
+                    response.status=true
+                    resolve(response)
+                }else{
+                    console.log('Login failed');
+                    resolve({status:false})
+                }
+             })
+            }else{
+                console.log('not exist');
+                resolve({status:false})
             }
         })
     }

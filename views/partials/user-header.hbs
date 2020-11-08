@@ -1,107 +1,110 @@
-  <!--Header-->
+<!--Header-->
 
-    <header>
-        <div class="top-bar_sub_w3layouts_agile">
-            <h6>
-                <i class="fa fa-phone" aria-hidden="true"></i> Call Us : +91 9400251580
+<header>
+    <div class="top-bar_sub_w3layouts_agile">
+        <h6>
+            <i class="fa fa-phone" aria-hidden="true"></i> Call Us : +91 9400251580
 
-                <a style="background-color: #0e9437;" href="contact.php">Contact Us </a>
-            </h6>
-            <div class="log">
+            <a style="background-color: #0e9437;" href="contact.php">Contact Us </a>
+        </h6>
+        <div class="log">
 
-                <h5>
-                    <a class="sign" href="#exampleModal" data-toggle="modal" data-target="#exampleModal">
-                        <i class="fas fa-user"></i> User Account</a>
-                </h5>
+            <h5>
+                <a class="sign" href="#exampleModal" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fas fa-user"></i> User Account</a>
+            </h5>
+
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
+    <div class="header_top" id="home">
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <i class="fa fa-car" aria-hidden="true"></i>Dream Haulage</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link cool" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle cool" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true">Vehicles
+                            <i class="fas fa-angle-down"></i></a>
+                        <div style="z-index: 1;" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="car-listing.php">Cars</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="bike-listing.php">Bikes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="scooter-listing.php">Scooters</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="bus-listing.php">Bus</a>
+
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link cool" href="/about">About Dream Haulage</a>
+                    </li>
+                    <div class="nav-item">
+                        <li class="has-child">
+                            <a></a>
+                            <ul class="drop-nav">
+
+                                
+
+                                {{#if user}}
+                                <li class="nav-item dropdown">
+                                    
+                                    <a style="background-color: #232222; font-size: 16px; border-radius: 32px; text-transform: uppercase; color:white; font-size: 14px; "
+                                        class="nav-link dropdown-toggle cool" href="#" id="navbarDropdownMenuLink"
+                                        data-toggle="dropdown"><i class="fa fa-user-circle"></i>{{user.name}}
+
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="profile.php">Profile Settings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="update-password.php">Update Password</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="my-booking.php">My Booking</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="receipt.php">Receipt</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="review.php">Rating</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/userLogout">Sign Out</a>
+
+                                    </div>
+                                </li>
+                                {{else}}
+                                <li class="nav-item  ">
+                                    <a style="background-color:#232222;  font-size: 16px; border-radius: 32px;"
+                                        class="nav-link cool" href="#" data-toggle="modal"
+                                        data-target="#exampleModal">Login</a>
+                                </li>
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </div>
 
 
             </div>
-            <div class="clearfix"> </div>
-        </div>
-
-        <div class="header_top" id="home">
-            <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="/">
-                    <i class="fa fa-car" aria-hidden="true"></i>Dream Haulage</a>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link cool" href="/">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle cool" href="#" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" >Vehicles
-                                <i class="fas fa-angle-down"></i></a>
-                            <div style="z-index: 1;" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="car-listing.php">Cars</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="bike-listing.php">Bikes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="scooter-listing.php">Scooters</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="bus-listing.php">Bus</a>
-
-                            </div>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link cool"  href="/about">About Dream Haulage</a>
-                        </li>
-                        <div class="nav-item">
-                            <li class="has-child">
-                                <a></a>
-                                <ul class="drop-nav">
-
-                                    <li class="nav-item  ">
-                                        <a style="background-color:#232222;  font-size: 16px; border-radius: 32px;" class="nav-link cool"
-                                            href="#" data-toggle="modal" data-target="#exampleModal">Login</a>
-                                    </li>
-
-                                    {{!-- //else --}}
-
-                                    {{!-- <li class="nav-item dropdown">
-                                        <a style="background-color: #3d3d3d; text-transform: uppercase; color:white; font-size: 14px; "
-                                            class="nav-link dropdown-toggle cool" href="#" id="navbarDropdownMenuLink"
-                                            data-toggle="dropdown"><i class="fa fa-user-circle"></i>
-
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="profile.php">Profile Settings</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="update-password.php">Update Password</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="my-booking.php">My Booking</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="receipt.php">Receipt</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="review.php">Rating</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="logout.php">Sign Out</a>
-
-                                        </div>
-                                       
-
-                                </ul>
-                            </li> --}}
-                        </div>
-
-
-                </div>
-                <div class="header-search-agileits-w3ls">
-                    <form action="#" method="post">
-                        <div class="search">
-                            <input class="form-control" type="search" placeholder="Search here..." name="Search"
-                                required="">
-                        </div>
-                        <!--<div class="section_room">
+            <div class="header-search-agileits-w3ls">
+                <form action="#" method="post">
+                    <div class="search">
+                        <input class="form-control" type="search" placeholder="Search here..." name="Search"
+                            required="">
+                    </div>
+                    <!--<div class="section_room">
 							<select id="country" onchange="change_country(this.value)" class="frm-field required">
 								<option value="null">All Items</option>
 								<option value="null"></option>
@@ -111,19 +114,17 @@
 								<option value="AX"></option>
 							</select>
 						</div>-->
-                        <div class="sear-sub">
-                            <button class="btn btn1">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <div class="sear-sub">
+                        <button class="btn btn1">
+                            <i class="fas fa-search"></i>
+                        </button>
 
-                        </div>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-            </nav>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </nav>
 
-        </div>
-    </header>
-    <!--//header-->
-
-    
+    </div>
+</header>
+<!--//header-->

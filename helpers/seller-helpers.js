@@ -34,6 +34,7 @@ module.exports={
                 })
             }else{
                 console.log('user name exist');
+                resolve({status:false})
             }
         })
     },
