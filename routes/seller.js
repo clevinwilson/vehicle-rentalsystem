@@ -61,7 +61,7 @@ router.post('/add-fuel', verifyLogin, (req, res) => {
 
 router.get('/sellerlogout', (req, res) => {
   req.session.destroy()
-  res.redirect('/seller')
+  res.redirect('/')
 })
 
 router.get('/manage-fueltype', verifyLogin, (req, res) => {
