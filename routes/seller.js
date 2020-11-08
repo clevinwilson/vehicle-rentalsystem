@@ -30,7 +30,7 @@ router.post('/sellerlogin', (req, res) => {
       req.session.loggedIn = true
       req.session.seller = response.seller
       console.log(req.session.seller);
-      res.render('seller/dashboard')
+      res.render('seller/dashboard',{seller:req.session.seller})
     } else {
       res.render('seller/seller-login')
     }
@@ -77,7 +77,7 @@ router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let fuel= await vehicleHelpers.getfuel()
   console.log(fuel);
-    res.render('seller/add-vehicle', { seller, fuel })
+    res.render('seller/add-vehicle', { seller, fuel,smess })
 
 })
 
@@ -137,6 +137,12 @@ router.post('/add-vehicle', (req, res) => {
   })
   res.redirect('/seller/add-vehicle')
 })
+router.get('/manage-vehicle', verifyLogin,async(req,res)=>{
+  let seller=req.session.seller
+  let vehicles =await vehicleHelpers.getVehicles()
+  console.log(vehicles);
+  res.render('seller/manage-vehicle',{vehicles,seller})
+})
 router.get('/driver',verifyLogin,(req,res)=>{
   let seller = req.session.seller
   res.render('seller/create-driver',{seller})
@@ -149,6 +155,12 @@ router.post('/add-driver',verifyLogin,(req,res)=>{
   })
   smess.mess = "Driver created successfully"
   res.redirect('/seller/driver')
+})
+router.get('/manage-driver',verifyLogin, async(req,res)=>{
+  let seller=req.session.seller
+  let drivers = await sellerHelpers.getDriver()
+  console.log(drivers);
+  res.render('seller/manage-driver',{seller,drivers})
 })
 
 

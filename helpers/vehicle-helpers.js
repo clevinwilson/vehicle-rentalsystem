@@ -20,10 +20,17 @@ module.exports={
         vehiclesdetails.img3=img3
         vehiclesdetails.img4=img4
         vehiclesdetails.img5=img5
+        vehiclesdetails.date=new Date()
         console.log(vehiclesdetails);
         db.get().collection(collection.VEHICLES_COLLECTION).insertOne(vehiclesdetails).then((data)=>{
             resolve(data.ops[0]._id)
         })
        })
+    },
+    getVehicles:()=>{
+        return new Promise((resolve,reject)=>{
+            let vehicles = db.get().collection(collection.VEHICLES_COLLECTION).find().limit(9).toArray()
+            resolve(vehicles)
+        })
     }
 }

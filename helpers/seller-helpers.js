@@ -60,5 +60,11 @@ module.exports={
                 resolve(response)
             })
         })
+    },
+    getDriver:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let drivers =await db.get().collection(collection.DRIVER_COLLECTION).find().toArray()
+            resolve(drivers)
+        })
     }
 }
