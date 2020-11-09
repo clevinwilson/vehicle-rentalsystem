@@ -17,10 +17,19 @@ router.get('/', function (req, res, next) {
 router.get('/seller-signup', (req, res) => {
   res.render('seller/seller-signup')
 })
+
 router.post('/sellersignup', (req, res) => {
   console.log(req.body);
   sellerHelpers.sellerSignup(req.body).then((response) => {
-    console.log('data inserted');
+    console.log(response);
+    if(response.status){
+      res.redirect('/seller/seller-signup')
+    }else{
+      req.session.loggedIn = true
+      req.session.seller = response
+      res.render('seller/dashboard', { seller: req.session.seller })
+    }
+   
   })
 })
 router.post('/sellerlogin', (req, res) => {
