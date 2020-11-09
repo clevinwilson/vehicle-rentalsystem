@@ -18,6 +18,7 @@ module.exports={
             console.log(userExist);
             if(userExist){
                 isExist.status=true
+                resolve(isExist)
             }else{
                 db.get().collection(collection.USER_COLLECTION).insertOne(userdetails).then((response)=>{
                     

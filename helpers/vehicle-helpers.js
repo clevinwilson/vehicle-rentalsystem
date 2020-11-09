@@ -11,9 +11,10 @@ module.exports={
            resolve(fuel)
         })
     },
-    addVehicles:(details,img1,img2,img3,img4,img5)=>{
+    addVehicles:(sellerId,details,img1,img2,img3,img4,img5)=>{
        return new Promise((resolve,reject)=>{
         let vehiclesdetails={}
+        
         vehiclesdetails=details
         vehiclesdetails.img1=img1
         vehiclesdetails.img2=img2
@@ -21,15 +22,17 @@ module.exports={
         vehiclesdetails.img4=img4
         vehiclesdetails.img5=img5
         vehiclesdetails.date=new Date()
+        vehiclesdetails.seller=objectId(sellerId)
         console.log(vehiclesdetails);
         db.get().collection(collection.VEHICLES_COLLECTION).insertOne(vehiclesdetails).then((data)=>{
             resolve(data.ops[0]._id)
         })
        })
     },
-    getVehicles:()=>{
-        return new Promise((resolve,reject)=>{
-            let vehicles = db.get().collection(collection.VEHICLES_COLLECTION).find().limit(9).toArray()
+    getVehicles:(sellerId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let vehicles = await db.get().collection(collection.VEHICLES_COLLECTION).find({seller:objectId(sellerId)}).limit(9).toArray()
+            console.log(vehicles);
             resolve(vehicles)
         })
     }

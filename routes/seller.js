@@ -30,7 +30,7 @@ router.post('/sellerlogin', (req, res) => {
       req.session.loggedIn = true
       req.session.seller = response.seller
       console.log(req.session.seller);
-      res.render('seller/dashboard',{seller:req.session.seller})
+      res.render('seller/dashboard', { seller: req.session.seller })
     } else {
       res.render('seller/seller-login')
     }
@@ -75,15 +75,16 @@ router.get('/manage-fueltype', verifyLogin, (req, res) => {
 
 router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
-  let fuel= await vehicleHelpers.getfuel()
+  let fuel = await vehicleHelpers.getfuel()
   console.log(fuel);
-    res.render('seller/add-vehicle', { seller, fuel,smess })
+  res.render('seller/add-vehicle', { seller, fuel, smess })
 
 })
 
 
 router.post('/add-vehicle', (req, res) => {
-  vehicleHelpers.addVehicles(req.body, req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((id) => {
+  let sellerId = req.session.seller._id
+  vehicleHelpers.addVehicles(sellerId, req.body, req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((id) => {
     console.log(id);
 
     let Image1 = req.files.Image1
@@ -137,30 +138,30 @@ router.post('/add-vehicle', (req, res) => {
   })
   res.redirect('/seller/add-vehicle')
 })
-router.get('/manage-vehicle', verifyLogin,async(req,res)=>{
-  let seller=req.session.seller
-  let vehicles =await vehicleHelpers.getVehicles()
-  console.log(vehicles);
-  res.render('seller/manage-vehicle',{vehicles,seller})
-})
-router.get('/driver',verifyLogin,(req,res)=>{
+router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
-  res.render('seller/create-driver',{seller})
+  let vehicles = await vehicleHelpers.getVehicles(req.session.seller._id)
+  console.log(vehicles);
+  res.render('seller/manage-vehicle', { vehicles, seller })
+})
+router.get('/driver', verifyLogin, (req, res) => {
+  let seller = req.session.seller
+  res.render('seller/create-driver', { seller })
 })
 
-router.post('/add-driver',verifyLogin,(req,res)=>{
+router.post('/add-driver', verifyLogin, (req, res) => {
   console.log(req.body);
-  sellerHelpers.adddriver(req.body).then((response)=>{
+  sellerHelpers.adddriver(req.body).then((response) => {
 
   })
   smess.mess = "Driver created successfully"
   res.redirect('/seller/driver')
 })
-router.get('/manage-driver',verifyLogin, async(req,res)=>{
-  let seller=req.session.seller
+router.get('/manage-driver', verifyLogin, async (req, res) => {
+  let seller = req.session.seller
   let drivers = await sellerHelpers.getDriver()
   console.log(drivers);
-  res.render('seller/manage-driver',{seller,drivers})
+  res.render('seller/manage-driver', { seller, drivers })
 })
 
 

@@ -19,7 +19,12 @@ router.post('/usersignup',(req,res)=>{
   console.log(req.body,);
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);  
-    res.json({status:true})
+    if(response.status){
+      res.redirect('/')
+    }else{
+      res.json({status:true})
+    }
+    
   })
   
 })
