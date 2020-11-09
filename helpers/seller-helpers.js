@@ -26,7 +26,7 @@ module.exports={
         return new Promise(async(resolve,reject)=>{
             let loginStatus = false 
             let response = {}
-            let seller= await db.get().collection(collection.SELLER_COLLECTION).findOne({username:sellerDetails.username})
+            let seller= await db.get().collection(collection.SELLER_COLLECTION).findOne({fullname:sellerDetails.fullname})
             if(seller){
                 bcrypt.compare(sellerDetails.password,seller.password).then((status)=>{
                     if(status){

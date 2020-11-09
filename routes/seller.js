@@ -41,7 +41,7 @@ router.post('/sellerlogin', (req, res) => {
       console.log(req.session.seller);
       res.render('seller/dashboard', { seller: req.session.seller })
     } else {
-      res.render('seller/seller-login')
+      res.redirect('/seller')
     }
   })
 })
