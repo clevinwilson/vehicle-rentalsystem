@@ -1,0 +1,58 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Dream Haulage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/seller">Home </a>
+                </li>
+                {{!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vehicles
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">cars</a>
+
+                    </div>
+                </li> --}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/seller/create-fuel-type">Fuel</a>
+                </li>
+                 <li class="nav-item active">
+                    <a class="nav-link" href="/seller/add-vehicle">Vehicles</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="/seller/driver">Driver</a>
+                </li>
+            </ul>
+            {{#if admin}}
+            <div class="dropdown" style=" margin-right: 22px;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{admin.adminname}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Edit Profile</a>
+                    <a class="dropdown-item" href="/seller/sellerlogout">Logout</a>
+                </div>
+            </div>
+            {{else}}
+            <div>
+                <a class="nav-link" style="background-color: #4caf50;margin-right: 21px; color: white; border-radius: 6px" href="/userlogin">Login</a>
+            </div>
+            {{/if}}
+            <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+            
+        </div>
+    </nav>
+</header>

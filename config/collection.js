@@ -3,5 +3,6 @@ module.exports={
     FUEL_COLLECTION:'fuel',
     VEHICLES_COLLECTION:'vehicles',
     DRIVER_COLLECTION:'driver',
-    USER_COLLECTION:'user'
+    USER_COLLECTION:'user',
+    ADMIN_COLLECTION:'admin'
 }
