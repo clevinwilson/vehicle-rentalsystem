@@ -56,7 +56,13 @@ router.post('/create-category',verifyLogin,(req,res)=>{
     }
   })
 })
-
+router.get('/manage-category',verifyLogin,(req,res)=>{
+  adminHelpers.getCategory().then((category)=>{
+    console.log(category);
+    let admin=req.session.admin
+    res.render('admin/manage-category',{category,admin})
+  })
+})
 
 
 module.exports = router;

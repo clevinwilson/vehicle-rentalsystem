@@ -42,5 +42,11 @@ module.exports = {
                 })
             }
         })
+    },
+    getCategory:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let category=await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
+            resolve(category)
+        })
     }
 }
