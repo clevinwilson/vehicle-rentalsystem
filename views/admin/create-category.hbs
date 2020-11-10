@@ -1,0 +1,36 @@
+<div>
+    <h2 class="text-center mt-3">Vehicle Category</h2>
+</div>
+<section>
+    <div class="container">
+        <div class="row mt-5">
+            <div class=" col-12 col-md-12">
+                <div class="pb-3  my-auto text-center">
+                    <a class="btn btn-success" href="/admin/create-category" style="color: white;">Create Category</a>
+                    <a class="ml-5 btn btn-danger" href="/admin/manage-category" style="color: white;">Manage
+                        Category</a>
+                </div><br>
+                {{#if responsemessage}}
+                <div class="alert alert-succes" style="color:{{responsemessage.color}};background-color:{{responsemessage.backgroundcolor}}">
+                    <strong>{{responsemessage.type}}</strong> {{responsemessage.message}}
+                </div>
+                {{/if}}
+                <form action="/admin/create-category" method="POST" class="mt-5 p-4"
+                    style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter Vehicle Category</b></p>
+                    </div>
+                    <div class="form-group mt-5">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control col-md-12 mt-2" id="category" name="category"
+                            placeholder="Category">
+                    </div>
+                    <br>
+                    <center><button type="submit" class="btn btn-primary mr-auto">Submit</button></center>
+                    <div class="listing-title">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

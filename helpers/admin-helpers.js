@@ -29,5 +29,18 @@ module.exports = {
                 resolve({status:false})
             }
         })
+    },
+    createCategory:(category)=>{
+        return new Promise(async(resolve,reject)=>{
+            let isExist=await db.get().collection(collection.CATEGORY_COLLECTION).findOne({category:category.category})
+            if(isExist){
+                console.log('category alredy exist');
+                resolve({status:true})
+            }else{
+                db.get().collection(collection.CATEGORY_COLLECTION).insertOne(category).then((response)=>{
+                    resolve(response)
+                })
+            }
+        })
     }
 }

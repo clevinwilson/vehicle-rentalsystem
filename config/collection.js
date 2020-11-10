@@ -4,5 +4,6 @@ module.exports={
     VEHICLES_COLLECTION:'vehicles',
     DRIVER_COLLECTION:'driver',
     USER_COLLECTION:'user',
-    ADMIN_COLLECTION:'admin'
+    ADMIN_COLLECTION:'admin',
+    CATEGORY_COLLECTION:'category'
 }
