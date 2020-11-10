@@ -48,5 +48,12 @@ module.exports = {
             let category=await db.get().collection(collection.CATEGORY_COLLECTION).find().toArray()
             resolve(category)
         })
+    },
+    getRegSellers:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.SELLER_COLLECTION).find().toArray().then((sellers)=>{
+                resolve(sellers)
+            })
+        })
     }
 }
