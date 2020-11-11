@@ -55,5 +55,28 @@ module.exports = {
             console.log(cars);
             resolve(cars)
         })
+    },
+    getLcars:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let Lcars=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:"lcar"}).toArray()
+            resolve(Lcars)
+        })
+    },getBike:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let bikes=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:"bike"}).toArray()
+            resolve(bikes)
+        })
+    }
+    ,getScooter:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let scooters=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:"scooters"}).toArray()
+            resolve(scooters)
+        })
+    },
+    getBus:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let buses=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:"bus"}).toArray()
+            resolve(buses)
+        })
     }
 }

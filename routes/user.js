@@ -83,5 +83,26 @@ router.get('/car-listing',(req,res)=>{
     res.render("user/car-listing",{cars,user}) 
   })
 })
+router.get('/lcar-listing',async(req,res)=>{
+  let user=req.session.user
+  let lcars=await vehicleHelpers.getLcars()
+  res.render('user/lcar-listing',{user,lcars})
+})
+router.get('/bike-listing',async(req,res)=>{
+  let user=req.session.user
+  let bikes=await vehicleHelpers.getBike()
+  res.render('user/bike-listing',{bikes,user})
+})
+router.get('/scooter-listing',async(req,res)=>{
+  let user=req.session.user
+  let scooters=await vehicleHelpers.getScooter()
+  res.render('user/scooter-listing',{scooters,user})
+})
+router.get('/bus-listing',async(req,res)=>{
+  let user=req.session.user
+  let buses=await vehicleHelpers.getBus()
+  res.render('user/bus-listing',{buses,user})
+})
+
 
 module.exports = router;

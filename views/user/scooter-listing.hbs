@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>Dream Haulage | Car Listing</title>
+    <title>Dream Haulage | Scooter Listing</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->
@@ -55,30 +55,18 @@
         <div class="container">
             <div class="page-header_wrap">
                 <div class="page-heading">
-                    <h1>Car Listing</h1>
+                    <h1>Scooter Listing</h1>
                 </div>
                 <ul class="coustom-breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li>Car Listing</li>
+                    <li>Scooter Listing</li>
                 </ul>
             </div>
         </div>
         <!-- Dark Overlay-->
         <div class="dark-overlay"></div>
     </section>
-    <div class="portfolio" id="portfolio">
-        <div class="inner-sec-wthree-agileits">
-            <ul class="portfolio-categ filter text-center mb-lg-5 mb-3">
-                <li class="cat-item-1">
-                    <a href="/car-listing" title="Category 1">NON-LEXURIOUS CARS</a>
-                </li>
-                <li class="cat-item-2">
-                    <a href="/lcar-listing" title="Category 2">LEXURIOUS CARS</a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
+    
     <!-- /Page Header-->
 
     <!--Listing-->
@@ -92,7 +80,7 @@
                             <p><span><?php echo htmlentities($cnt);?> Listings</span></p>
                         </div>
                     </div>
-                    {{#each cars}}
+                    {{#each scooters}}
                     <div class="product-listing-m gray-bg">
                         <div class="product-listing-img"><img
                                 src="/vehicle-images/{{this._id}}{{this.img1}}"
@@ -125,7 +113,7 @@
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Scooter</h5>
                         </div>
                         <div class="sidebar_filter">
                             <form action="search-carresult.php" method="post">
@@ -166,12 +154,12 @@
                     </div>
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Cars</h5>
+                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Scooters</h5>
                         </div>
                         <div class="recent_addedcars">
                             <ul>
           
-                {{#each cars}}
+                {{#each scooters}}
                                 <li class="gray-bg">
                                     <div class="recent_post_img"> <a
                                             href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img
