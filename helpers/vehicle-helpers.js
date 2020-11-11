@@ -42,5 +42,11 @@ module.exports = {
             console.log(vehicle);
             resolve(vehicle)
         })
+    },
+    getsimilarVehicles:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let vehicle=await db.get().collection(collection.VEHICLES_COLLECTION).find().toArray()
+            resolve(vehicle)
+        })
     }
 }

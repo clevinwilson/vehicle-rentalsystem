@@ -20,7 +20,8 @@ router.get('/', function(req, res, next) {
 });
 let smess = {}
 router.get('/about', function(req, res, next) {
-  res.render('user/about', { title: 'Express' });
+  let user=req.session.user
+  res.render('user/about', { user});
 });
 router.post('/usersignup',(req,res)=>{
   console.log(req.body,);
@@ -61,12 +62,12 @@ router.get('/userLogout',(req,res)=>{
   res.redirect('/')
 })
 
-router.get("/vehicle-details",(req,res)=>{
+router.get("/vehicle-details",async(req,res)=>{
     let user=req.session.user
-  vehicleHelpers.getvehicleDetails("5fa8f619078b442728ef12ac").then((vehicleDetails)=>{
-    
-    res.render('user/vehicle-details',{vehicleDetails,user})
-  })
+
+  let vehicleDetails=await vehicleHelpers.getvehicleDetails("5fa8f619078b442728ef12ac")
+  let vehicles=await vehicleHelpers.getsimilarVehicles()
+  res.render('user/vehicle-details',{vehicleDetails,user,vehicles})
 })
 
 module.exports = router;
