@@ -65,7 +65,7 @@ router.get('/manage-category',verifyLogin,(req,res)=>{
 })
 router.get('/reg-sellers',verifyLogin,(req,res)=>{
   adminHelpers.getRegSellers().then((sellers)=>{
-    sellers.password=""
+    
     console.log(sellers);
     res.render('admin/reg-sellers',{sellers,"admin":req.session.admin})
 

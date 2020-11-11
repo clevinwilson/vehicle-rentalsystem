@@ -2,7 +2,14 @@ const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 var userHelpers=require('../helpers/user-helpers')
-
+var vehicleHelpers=require('../helpers/vehicle-helpers')
+const verifyLogin=(req,res,next)=>{
+  if(req.session.loggedIn){
+    next()
+  }else{
+    res.redirect('/')
+  }
+}
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let user=req.session.user
@@ -52,6 +59,14 @@ router.post('/userlogin',(req,res)=>{
 router.get('/userLogout',(req,res)=>{
   req.session.destroy()
   res.redirect('/')
+})
+
+router.get("/vehicle-details",(req,res)=>{
+    let user=req.session.user
+  vehicleHelpers.getvehicleDetails("5fa8f619078b442728ef12ac").then((vehicleDetails)=>{
+    
+    res.render('user/vehicle-details',{vehicleDetails,user})
+  })
 })
 
 module.exports = router;
