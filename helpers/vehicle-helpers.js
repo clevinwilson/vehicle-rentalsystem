@@ -48,5 +48,12 @@ module.exports = {
             let vehicle=await db.get().collection(collection.VEHICLES_COLLECTION).find().toArray()
             resolve(vehicle)
         })
+    },
+    getCars:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let cars=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:'car'}).toArray()
+            console.log(cars);
+            resolve(cars)
+        })
     }
 }

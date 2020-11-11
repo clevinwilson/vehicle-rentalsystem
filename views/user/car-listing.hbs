@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Dream Haulage | Car Listing</title>
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
+    <!--Custome Style -->
+    <link rel="stylesheet" href="New folder/css/style.css" type="text/css">
+    <!--OWL Carousel slider-->
+    <link rel="stylesheet" href="New folder/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="New folder/css/owl.transitions.css" type="text/css">
+    <!--slick-slider -->
+    <link href="New folder/css/slick.css" rel="stylesheet">
+    <!--bootstrap-slider -->
+    <link href="New folder/css/bootstrap-slider.min.css" rel="stylesheet">
+    <!--FontAwesome Font Style -->
+    <link href="New folder/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Prata" rel="stylesheet">
+
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="New folder/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="New folder/images/favicon-icon/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <!--Header-->
+    {{>user-header}}
+    <!-- /Header -->
+
+    <section class="page-header listing_page">
+        <div class="container">
+            <div class="page-header_wrap">
+                <div class="page-heading">
+                    <h1>Car Listing</h1>
+                </div>
+                <ul class="coustom-breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>Car Listing</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Dark Overlay-->
+        <div class="dark-overlay"></div>
+    </section>
+    <div class="portfolio" id="portfolio">
+        <div class="inner-sec-wthree-agileits">
+            <ul class="portfolio-categ filter text-center mb-lg-5 mb-3">
+                <li class="cat-item-1">
+                    <a href="/car-listing" title="Category 1">NON-LEXURIOUS CARS</a>
+                </li>
+                <li class="cat-item-2">
+                    <a href="lcar-listing.php" title="Category 2">LEXURIOUS CARS</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- /Page Header-->
+
+    <!--Listing-->
+    <section class="listing-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-md-push-3">
+                    <div class="result-sorting-wrapper">
+                        <div class="sorting-count">
+
+                            <p><span><?php echo htmlentities($cnt);?> Listings</span></p>
+                        </div>
+                    </div>
+                    {{#each cars}}
+                    <div class="product-listing-m gray-bg">
+                        <div class="product-listing-img"><img
+                                src="/vehicle-images/{{this._id}}{{this.img1}}"
+                                class="img-responsive" alt="Image" /> </a>
+                        </div>
+                        <div class="product-listing-content">
+                            <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">{{this.brandname}}
+                                    , {{this.vehiclename}}</a></h5>
+                            <p class="list-price">₹{{this.priceperday}}Per Day</p>
+                            <ul>
+                                <li><i class="fa fa-user"
+                                        aria-hidden="true"></i>{{this.seatingcapacity}}
+                                    seats</li>
+                                <li><i class="fa fa-calendar"
+                                        aria-hidden="true"></i>{{this.modelyear}} model</li>
+                                <li><i class="fa fa-car"
+                                        aria-hidden="true"></i>{{this.fuel}}</li>
+                            </ul>
+                            <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>" class="btn">View
+                                Details <span class="angle_arrow"><i class="fa fa-angle-right"
+                                        aria-hidden="true"></i></span></a>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+
+
+                <!--Side-Bar-->
+                <aside class="col-md-3 col-md-pull-9">
+                    <div class="sidebar_widget">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+                        </div>
+                        <div class="sidebar_filter">
+                            <form action="search-carresult.php" method="post">
+                                <div class="form-group select">
+                                    <select class="form-control" name="brand">
+                                        <option>Select Brand</option>
+
+                                        <?php $sql = "SELECT * from  brands ";
+                    $query = $dbh -> prepare($sql);
+                    $query->execute();
+                    $results=$query->fetchAll(PDO::FETCH_OBJ);
+                    $cnt=1;
+                    if($query->rowCount() > 0)
+                    {
+                    foreach($results as $result)
+                    {       ?>
+                                        <option value="<?php echo htmlentities($result->id);?>">
+                                            <?php echo htmlentities($result->BrandName);?></option>
+                                        <?php }} ?>
+
+                                    </select>
+                                </div>
+                                <div class="form-group select">
+                                    <select class="form-control" name="fueltype">
+                                        <option>Select Fuel Type</option>
+                                        <option value="Petrol">Petrol</option>
+                                        <option value="Diesel">Diesel</option>
+                                        <option value="CNG">CNG</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Search Car</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar_widget">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Cars</h5>
+                        </div>
+                        <div class="recent_addedcars">
+                            <ul>
+          
+                {{#each cars}}
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"> <a
+                                            href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img
+                                                src="/vehicle-images/{{this._id}}{{this.img1}}"
+                                                alt="image"></a> </div>
+                                    <div class="recent_post_title"> <a
+                                            href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">{{this.brandname}}
+                                            , {{this.vehiclename}}</a>
+                                        <p class="widget_price">₹{{this.priceperday}} Per
+                                            Day</p>
+                                    </div>
+                                </li>
+                                {{/each}}
+
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <!-- /Listing-->
+
+    <!--Footer -->
+    {{>user-footer}}
+    <!-- /Footer-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 70px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body video">
+                    <div class="signin-form profile">
+                        <div class="login-m_page">
+                            <h2 align="center">Dream Haulage </h2>
+
+                            <h3 class="sign">Log In</h3>
+                            <div class="login-form">
+                                <form action="#" method="post">
+                                    <input class="form-control" type="text" name="name" placeholder="Name" required="">
+                                    <input class="form-control" type="password" name="password" placeholder="Password"
+                                        required="">
+                                    <div class="tp">
+                                        <input class="form-control" type="submit" value="Log In" name="login">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <p>
+                                <a href="#" data-toggle="modal" data-target="#exampleModal2" style="color: red; "> Don't
+                                    have an account?</a>
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//model-->
+    <!-- Modal join  -->
+    <script>
+        function checkAvailability() {
+            $("#loaderIcon").show();
+            jQuery.ajax({
+                url: "check_availability.php",
+                data: 'email=' + $("#email").val(),
+                type: "POST",
+                success: function (data) {
+                    $("#user-availability-status").html(data);
+                    $("#loaderIcon").hide();
+                },
+                error: function () { }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function valid() {
+            if (document.signup.password.value != document.signup.confirmpassword.value) {
+                alert("Password and Confirm Password Field do not match  !!");
+                document.signup.confirmpassword.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true"
+        style="padding-top: 70px;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body video">
+                    <div class="signin-form profile">
+                        <div class="login-m_page">
+                            <h3 class="sign">Join</h3>
+                            <div class="login-form">
+                                <form action="#" method="post">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="name" id="name"
+                                            onBlur="check_availability_username()" placeholder="Name" required="">
+                                    </div>
+                                    <span id="check_availability_username" style="font-size:12px;"></span>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            onBlur="checkAvailability()" placeholder="Email Address"
+                                            required="required">
+                                        <span id="user-availability-status" style="font-size:12px;"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="address" placeholder="Address"
+                                            required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="contactno" placeholder="Contactno"
+                                            required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="password" id="password1"
+                                            placeholder="Password" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="password" id="password2"
+                                            placeholder="Confirm Password" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="submit" id="loadeddrIcon" value="Join"
+                                            name="join">
+                                    </div>
+                                </form>
+                            </div>
+                            <p>
+                                <a href="#"> By clicking Join, I agree to your terms</a>
+                            </p>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--//model-->
+
+
+
+
+
+
+    <!-- js -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- //js -->
+    <!-- password-script -->
+    <script>
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+    </script>
+    <!-- //password-script -->
+    <!-- required-js-files-->
+    <!-- carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 1,
+                        nav: false
+                    },
+                    900: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //carousel -->
+
+    <!--//required-js-files-->
+    <!-- start-smoth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('php,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+
+    <script>
+        $(document).ready(function () {
+            /*
+                        var defaults = {
+                            containerID: 'toTop', // fading element id
+                          containerHoverID: 'toTopHover', // fading element hover id
+                          scrollSpeed: 1200,
+                          easingType: 'linear' 
+                        };
+                        */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- Necessary-JS-File-For-Bootstrap -->
+    <!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/jquery.quicksand.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <!-- //jQuery-Photo-filter-lightbox-Gallery-plugin -->
+
+
+
+
+    </script>
+    </script>
+    </script>
+    </script>
+
+    <!--Back to top-->
+    <!-- <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+ -->
+    <!--/Back to top-->
+
+    <!-- Scripts -->
+    <script src="New folder/js/jquery.min.js"></script>
+    <script src="New Folder/css/bootstrap.min.js"></script>
+    <script src="New folder/js/interface.js"></script>
+    <!--Switcher-->
+    <script src="New folder/switcher/js/switcher.js"></script>
+    <!--bootstrap-slider-JS-->
+    <script src="New folder/css/bootstrap-slider.min.js"></script>
+    <!--Slider-JS-->
+    <script src="New folder/js/slick.min.js"></script>
+    <script src="New folder/js/owl.carousel.min.js"></script>
+
+</body>
+
+</html>

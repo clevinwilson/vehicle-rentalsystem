@@ -77,5 +77,11 @@ router.get('/profile',verifyLogin,(req,res)=>{
   })
   
 })
+router.get('/car-listing',(req,res)=>{
+  let user=req.session.user
+  vehicleHelpers.getCars().then((cars)=>{
+    res.render("user/car-listing",{cars,user}) 
+  })
+})
 
 module.exports = router;
