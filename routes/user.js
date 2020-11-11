@@ -69,5 +69,13 @@ router.get("/vehicle-details",async(req,res)=>{
   let vehicles=await vehicleHelpers.getsimilarVehicles()
   res.render('user/vehicle-details',{vehicleDetails,user,vehicles})
 })
+router.get('/profile',verifyLogin,(req,res)=>{
+  let user=req.session.user
+  userHelpers.getUserDetails(req.session.user._id).then((details)=>{
+    console.log(details);
+    res.render('user/profile',{details,user})
+  })
+  
+})
 
 module.exports = router;

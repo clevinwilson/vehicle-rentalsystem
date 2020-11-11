@@ -64,5 +64,13 @@ module.exports={
                 resolve({status:false})
             }
         })
+    },
+    getUserDetails:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let userDetails=await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+            console.log(userDetails);
+            resolve(userDetails)
+
+        })
     }
 }

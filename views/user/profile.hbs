@@ -1,0 +1,164 @@
+
+  <!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>Dream haulage | My Profile</title>
+<!--Bootstrap -->
+<link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
+<!--Custome Style -->
+<link rel="stylesheet" href="New folder/css/style.css" type="text/css">
+<!--OWL Carousel slider-->
+<link rel="stylesheet" href="New folder/css/owl.carousel.css" type="text/css">
+<link rel="stylesheet" href="New folder/css/owl.transitions.css" type="text/css">
+<!--slick-slider -->
+<link href="New folder/css/slick.css" rel="stylesheet">
+<!--bootstrap-slider -->
+<link href="New folder/css/bootstrap-slider.min.css" rel="stylesheet">
+<!--FontAwesome Font Style -->
+<link href="New folder/css/font-awesome.min.css" rel="stylesheet">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="New folder/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="New folder/images/favicon-icon/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"> 
+ <style>
+    .errorWrap {
+    padding: 10px;
+    margin: 0 0 20px 0;
+    background: #fff;
+    border-left: 4px solid #dd3d36;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.succWrap{
+    padding: 10px;
+    margin: 0 0 20px 0;
+    background: #fff;
+    border-left: 4px solid #5cb85c;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+    </style>
+</head>
+<body>
+
+ 
+        
+<!--Header-->
+{{>user-header}}
+<!-- /Header --> 
+<!--Page Header-->
+<section class="page-header profile_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>Your Profile</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>Profile</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header--> 
+
+
+<section class="user_profile inner_pages">
+  <div class="container">
+    <div class="user_profile_info gray-bg padding_4x4_40">
+      <div class="upload_user_logo"> <img src="New folder/images/dealer-logo.jpg" alt="image">
+      </div>
+
+      <div class="dealer_info">
+        <h5>{{details.name}}</h5>
+        <p>{{details.address}}<br>
+          {{details.email}}</p>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+        {{>sidebar}}
+      <div class="col-md-6 col-sm-8">
+        <div class="profile_wrap">
+          <h5 class="uppercase underline">Genral Settings</h5>
+          <?php  
+         if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+          <form  method="post">
+        <!--    <div class="form-group">
+              <label class="control-label">Reg Date -</label>
+             <?php echo htmlentities($result->RegDate);?>
+            </div> -->
+             
+            <div class="form-group">
+              <label class="control-label">Last Update at  -</label>
+             <?php echo htmlentities($result->UpdationDate);?>
+            </div>
+          
+            <div class="form-group">
+              <label class="control-label">Full Name</label>
+              <input class="form-control white_bg" name="fullname" value="{{details.name}}" id="fullname" type="text"  required readonly>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Email Address</label>
+              <input class="form-control white_bg" value="{{details.email}}" name="emailid" id="email" type="email" required readonly>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Phone Number</label>
+              <input class="form-control white_bg" name="mobilenumber" value="{{details.contactno}}" id="phone-number" type="text" required readonly>
+            </div>
+            
+            <div class="form-group">
+              <label class="control-label">Your Address</label>
+              <textarea class="form-control white_bg" name="address" rows="4" readonly>{{details.address}}</textarea>
+            </div>
+           
+  
+           
+            <div class="form-group">
+              <a href="change-profile .php" class="btn">Edit Profile<span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/Profile-setting--> 
+
+<!--Footer -->
+{{>user-footer}}
+<!-- /Footer--> 
+
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top--> 
+
+ 
+
+<!-- Scripts --> 
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script> 
+<script src="assets/js/interface.js"></script> 
+<!--Switcher-->
+<script src="assets/switcher/js/switcher.js"></script>
+<!--bootstrap-slider-JS--> 
+<script src="assets/js/bootstrap-slider.min.js"></script> 
+<!--Slider-JS--> 
+<script src="assets/js/slick.min.js"></script> 
+<script src="assets/js/owl.carousel.min.js"></script>
+
+</body>
+</html>
+<?php } ?>
