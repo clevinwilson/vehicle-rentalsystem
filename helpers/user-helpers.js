@@ -73,5 +73,20 @@ module.exports={
             resolve(userDetails)
 
         })
+    },
+    changeUserProfile:(userDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION)
+            .updateOne({_id:objectId(userDetails.id)},{
+                $set:{
+                    name:userDetails.fullname,
+                    email:userDetails.emailid,
+                    contactno:userDetails.mobilenumber,
+                    address:userDetails.address
+                }
+            }).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

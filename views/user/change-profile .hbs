@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="keywords" content="">
 <meta name="description" content="">
-<title>Dream haulage | My Profile</title>
+<title>Dream haulage | Edit My Profile</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -22,7 +22,14 @@
 <!--FontAwesome Font Style -->
 <link href="New folder/css/font-awesome.min.css" rel="stylesheet">
 
-
+<!-- SWITCHER -->
+		<link rel="stylesheet" id="switcher-css" type="text/css" href="New folder/switcher/css/switcher.css" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/orange.css" title="orange" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/blue.css" title="blue" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/pink.css" title="pink" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/green.css" title="green" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/purple.css" title="purple" media="all" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
@@ -60,7 +67,7 @@
   <div class="container">
     <div class="page-header_wrap">
       <div class="page-heading">
-        <h1>Your Profile</h1>
+        <h1>Edit Profile</h1>
       </div>
       <ul class="coustom-breadcrumb">
         <li><a href="#">Home</a></li>
@@ -72,6 +79,7 @@
   <div class="dark-overlay"></div>
 </section>
 <!-- /Page Header--> 
+
 
 
 <section class="user_profile inner_pages">
@@ -93,7 +101,12 @@
       <div class="col-md-6 col-sm-8">
         <div class="profile_wrap">
           <h5 class="uppercase underline">General Settings</h5>
-                   <form  method="post">
+         {{#if responsemessage}}
+                <div class="alert alert-succes" style="color:{{responsemessage.color}};background-color:{{responsemessage.backgroundcolor}}">
+                    <strong>{{responsemessage.type}}</strong> {{responsemessage.message}}
+                </div>
+                {{/if}}
+          <form  method="post" action="/change-profile" id="change-profile">
         <!--    <div class="form-group">
               <label class="control-label">Reg Date -</label>
              <?php echo htmlentities($result->RegDate);?>
@@ -103,29 +116,29 @@
               <label class="control-label">Last Update at  -</label>
              <?php echo htmlentities($result->UpdationDate);?>
             </div>
-          
-            <div class="form-group">
+             <div class="form-group">
               <label class="control-label">Full Name</label>
-              <input class="form-control white_bg" name="fullname" value="{{details.name}}" id="fullname" type="text"   readonly>
+              <input class="form-control white_bg" name="fullname" value="{{details.name}}" id="fullname" type="text"  required >
             </div>
             <div class="form-group">
               <label class="control-label">Email Address</label>
-              <input class="form-control white_bg" value="{{details.email}}" name="emailid" id="email" type="email"  readonly>
+              <input class="form-control white_bg" value="{{details.email}}" name="emailid" id="email" type="email" required >
             </div>
             <div class="form-group">
               <label class="control-label">Phone Number</label>
-              <input class="form-control white_bg" name="mobilenumber" value="{{details.contactno}}" id="phone-number" type="text"  readonly>
+              <input class="form-control white_bg" name="mobilenumber" value="{{details.contactno}}" id="phone-number" type="text" required >
             </div>
             
             <div class="form-group">
               <label class="control-label">Your Address</label>
-              <textarea class="form-control white_bg" name="address" rows="4" readonly>{{details.address}}</textarea>
+              <textarea class="form-control white_bg" name="address" rows="4" required >{{details.address}}</textarea>
             </div>
+            <input style="display: none;" class="form-control white_bg" name="id" value="{{details._id}}" id="id" type="text"  required >
            
-  
+           
            
             <div class="form-group">
-              <a href="/change-profile" class="btn">Edit Profile<span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+              <button type="submit"  class="btn">Save Changes <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
             </div>
           </form>
         </div>
@@ -149,8 +162,6 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/interface.js"></script> 
-<!--Switcher-->
-<script src="assets/switcher/js/switcher.js"></script>
 <!--bootstrap-slider-JS--> 
 <script src="assets/js/bootstrap-slider.min.js"></script> 
 <!--Slider-JS--> 

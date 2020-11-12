@@ -103,6 +103,31 @@ router.get('/bus-listing',async(req,res)=>{
   let buses=await vehicleHelpers.getBus()
   res.render('user/bus-listing',{buses,user})
 })
+router.get('/change-profile',verifyLogin,(req,res)=>{
+  let user=req.session.user
+  userHelpers.getUserDetails(req.session.user._id).then((details)=>{
+    console.log(details);
+    res.render('user/change-profile ',{details,user,"responsemessage":req.session.responsemessage})
+    req.session.responsemessage=null
+  })
+})
+router.post('/change-profile',verifyLogin,(req,res)=>{
+  console.log(req.body);
+  let user=req.session.user
+  userHelpers.changeUserProfile(req.body).then((response)=>{
+    if(response){
+      req.session.responsemessage={
+        type:"Success!",
+        message:"Profile updated successfully",
+        color:"#155724",
+        backgroundcolor:"#d4edda"
+      }
+      res.redirect('/change-profile')
+    }else{
+   
+    }
+  })
+})
 
 
 module.exports = router;
