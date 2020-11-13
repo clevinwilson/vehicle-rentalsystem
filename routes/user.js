@@ -124,9 +124,47 @@ router.post('/change-profile',verifyLogin,(req,res)=>{
       }
       res.redirect('/change-profile')
     }else{
-   
+      req.session.responsemessage={
+        type:"Error!",
+        message:"Profile updated successfully",
+        color:"red",
+        backgroundcolor:"#e38494"
+      }
     }
   })
+})
+router.get('/update-password',(req,res)=>{
+  let user=req.session.user
+  let responsemessage=req.session.responsemessage
+  res.render('user/update-password',{user,responsemessage})
+  req.session.responsemessage=null
+})
+router.post('/update-password',(req,res)=>{
+  console.log(req.body);
+  userHelpers.updatePassword(req.session.user._id,req.body).then((response)=>{
+    if(response.status){
+      req.session.responsemessage={
+        type:"Success!",
+        message:"Password updated successfully",
+        color:"#155724",
+        backgroundcolor:"#d4edda"
+      }
+      res.redirect('/update-password')
+    }else{
+      req.session.responsemessage={
+        type:"Error!",
+        message:"Error",
+        color:"red",
+        backgroundcolor:"#e38494"
+      }
+      res.redirect('/update-password')
+    }
+  })
+})
+
+router.get('/contact',(req,res)=>{
+  let user=req.session.user
+  res.render('user/contact',{user})
 })
 
 
