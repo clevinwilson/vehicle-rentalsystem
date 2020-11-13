@@ -1,0 +1,189 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>Dream Haulage</title>
+<!--Bootstrap -->
+<link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
+<!--Custome Style -->
+<link rel="stylesheet" href="New folder/css/style.css" type="text/css">
+<!--OWL Carousel slider-->
+<link rel="stylesheet" href="New folder/css/owl.carousel.css" type="text/css">
+<link rel="stylesheet" href="New folder/css/owl.transitions.css" type="text/css">
+<!--slick-slider -->
+<link href="New folder/css/slick.css" rel="stylesheet">
+<!--bootstrap-slider -->
+<link href="New folder/css/bootstrap-slider.min.css" rel="stylesheet">
+<!--FontAwesome Font Style -->
+<link href="New folder/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- SWITCHER -->
+		<link rel="stylesheet" id="switcher-css" type="text/css" href="New folder/switcher/css/switcher.css" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/orange.css" title="orange" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/blue.css" title="blue" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/pink.css" title="pink" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/green.css" title="green" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="New folder/switcher/css/purple.css" title="purple" media="all" />
+
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="New folder/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="New folder/images/favicon-icon/favicon.png">
+<!-- Google-Font-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+
+
+<!--Header-->
+{{>user-header}}
+<!--Page Header-->
+<!-- /Header -->
+
+<!--Page Header-->
+<section class="page-header profile_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>My Booking</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>My Booking</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header-->
+
+
+<section class="user_profile inner_pages">
+  <div class="container">
+    <div class="user_profile_info gray-bg padding_4x4_40">
+      <div class="upload_user_logo"> <img src="New folder/images/propic.png" alt="image">
+      </div>
+
+      <div class="dealer_info">
+        <h5 style="font-weight: 500;text-transform: uppercase;">{{user.name}}</h5>
+        <p>{{user.address}}<br>
+          {{user.email}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+       {{>sidebar}}
+
+      <div class="col-md-6 col-sm-8">
+        <div class="profile_wrap">
+          <h5 class="uppercase underline">My Bookings </h5>
+          <div class="my_vehicles_list">
+            <ul class="vehicle_listing">
+
+
+<?php
+$ToDate=$result->ToDate;
+$tamount=$result->tamount;
+
+ ?>
+ {{#each response}}
+<li>
+                 <div class="vehicle_img"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->vid);?>"><img src="/vehicle-images/{{this._id}}{{this.img1}}" alt="image"></a> </div>
+                <div class="vehicle_title">
+                  <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->vid);?>""> <?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></a></h6>
+                  <p><b>From Date:{{this.fromdate}}<br /> <b>To Date:</b> {{this.todate}}</p>
+                  {{!-- <?php 
+                             $todate =$result->ToDate;
+                             $date = date('Y-m-d ');
+                             $ss=strtotime($todate);
+                             $yy=strtotime($date);
+                             $diff = abs($ss - $yy );
+                             if($ss > $yy){
+                                                   $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                                               }else{
+                                                    $days ="Pleace book again or return the vehicle !!";
+                                                 }
+                             ?> --}}
+                  Days remaining : <?php echo htmlentities( $days);?> 
+                </div> 
+                {{!-- <?php if($result->Status==1)
+                { ?>
+                <div class="vehicle_status"> <a href="#" class="btn outline btn-xs active-btn">Confirmed</a>
+                           <div class="clearfix"></div>
+        </div>
+           <div class="vehicle_status"> <a href="pay.php?id=<?php echo $result->id ?>&&amount=<?php echo $result->PricePerDay ?>&&sid=<?php echo $result->sid ?>" ><font color=" red"><b> Payment by card</b></a>
+            <!-- <a href="cash.php?id=<?php echo $result->id ?>&&amount=<?php echo $result->PricePerDay ?>&&sid=<?php echo $result->sid ?>" ><font color=" red"><b>Payment by cash</b></a>
+                           <div class="clearfix"></div> -->
+        </div> --}}
+       
+
+              <?php } else if($result->Status==2) { ?>
+ <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Cancelled</a>
+            <div class="clearfix"></div>
+        </div>
+        {{/each}}
+
+         {{!-- <?php } else if($result->Status==5) { ?>
+ <div class="vehicle_status"> <a href="#" class="btn outline btn-xs active-btn">Amount Paid</a>
+            <div class="clearfix"></div>
+            <a  href="receipt.php"><font color="gray-bg"><b>Receipt</b></a>
+              <i class="fas fa-file"></i>
+               
+        </div>
+
+      <?php } else if($result->Status==6) { ?>
+ <div class="vehicle_status"> <a href="#" class="btn outline btn-xs active-btn">Delivered</a>
+            <div class="clearfix"></div>
+             <a  href="receipt.php"><font color=" gray-bg"><b>Receipt</b></a>
+              <i class="fas fa-file"></i>
+        </div>
+
+                <?php } else { ?>
+ <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Not Confirm yet</a>
+            <div class="clearfix"></div>
+        </div>
+                <?php } ?>
+       <div style="float: left"><p><b>Message:</b> <?php echo htmlentities($result->message);?> </p></div>
+              </li>
+              <?php }} ?> --}}
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/my-vehicles-->
+{{>user-footer}}
+
+<!-- Scripts -->
+<script src="New folder/js/jquery.min.js"></script>
+<script src="New folder/js/bootstrap.min.js"></script>
+<script src="New folder/js/interface.js"></script>
+<!--Switcher-->
+<script src="New folder/switcher/js/switcher.js"></script>
+<!--bootstrap-slider-JS-->
+<script src="New folder/js/bootstrap-slider.min.js"></script>
+<!--Slider-JS-->
+<script src="New folder/js/slick.min.js"></script>
+<script src="New folder/js/owl.carousel.min.js"></script>
+</body>
+</html>
+

@@ -117,5 +117,18 @@ module.exports = {
                 resolve({ status: false })
             }
         })
+    },
+    bookNow:(bookingDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.BOOKING_COLLECTION).insertOne(bookingDetails).then((response)=>{
+                resolve(resolve)
+            })
+        })
+    },
+    getBookings:(userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            let userBookings= await db.get().collection(collection.BOOKING_COLLECTION).find({userId:userId}).toArray()
+            resolve(userBookings)
+        })
     }
 }

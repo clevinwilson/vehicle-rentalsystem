@@ -253,10 +253,12 @@
           <div class="widget_heading">
             <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
           </div>
-          <form method="post">
+          <form method="post" action="/book" >
             <h5>Fromdate</h5>
             <div class="form-group">
-               <input type="hidden" class="form-control" name="sid" placeholder=" " value="<?php echo htmlentities($result->sid);?>" required>
+                <input type="hidden" class="form-control" name="vehicleId" placeholder=" " value="{{vehicleDetails._id}}" >
+               <input type="hidden" class="form-control" name="sellerId" placeholder=" " value="{{vehicleDetails.seller}}" >
+               <input type="hidden" class="form-control" name="userId" placeholder=" " value="{{user._id}}" >
              <input placeholder="Date" class="date form-control hasDatepicker" name="fromdate" id="datepicker" type="Date" value=""  required="" />
             </div>
             <h5>Todate</h5>
@@ -270,7 +272,7 @@
           {{#if user}}
                  if($result->Status==0){?>
               <div class="form-group">
-                <input type="submit" class="btn"  name="submit" value="Book Now">
+                <input type="submit" class="btn"   value="Book Now">
               </div>
               <?php } else { ?>
               <div class="form-group">
@@ -331,7 +333,7 @@
 <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
 <!--/Back to top--> 
  <!-- Modal login -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true"
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true"
         style="padding-top: 130px;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

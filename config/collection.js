@@ -5,5 +5,6 @@ module.exports={
     DRIVER_COLLECTION:'driver',
     USER_COLLECTION:'user',
     ADMIN_COLLECTION:'admin',
-    CATEGORY_COLLECTION:'category'
+    CATEGORY_COLLECTION:'category',
+    BOOKING_COLLECTION:'booking'
 }

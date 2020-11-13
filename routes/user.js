@@ -166,6 +166,25 @@ router.get('/contact',(req,res)=>{
   let user=req.session.user
   res.render('user/contact',{user})
 })
+router.get('/rating',(req,res)=>{
+  console.log('rating');
+  let user=req.session.user
+  res.render('user/rating',{user})
+})
+router.post('/book',(req,res)=>{
+  req.body.status=1
+  console.log(req.body);
+  userHelpers.bookNow(req.body).then((response)=>{
+    res.redirect('/vehicle-details')
+  })
+})
+router.get('/mybookings',(req,res)=>{
+  let user=req.session.user
+  userHelpers.getBookings(req.session.user._id).then((response)=>{
+    res.render('user/mybookings',{user,response})
+  })
+ 
+})
 
 
 module.exports = router;
