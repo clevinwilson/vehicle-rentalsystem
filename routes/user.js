@@ -133,13 +133,13 @@ router.post('/change-profile',verifyLogin,(req,res)=>{
     }
   })
 })
-router.get('/update-password',(req,res)=>{
+router.get('/update-password',verifyLogin,(req,res)=>{
   let user=req.session.user
   let responsemessage=req.session.responsemessage
   res.render('user/update-password',{user,responsemessage})
   req.session.responsemessage=null
 })
-router.post('/update-password',(req,res)=>{
+router.post('/update-password',verifyLogin,(req,res)=>{
   console.log(req.body);
   userHelpers.updatePassword(req.session.user._id,req.body).then((response)=>{
     if(response.status){
@@ -162,25 +162,39 @@ router.post('/update-password',(req,res)=>{
   })
 })
 
-router.get('/contact',(req,res)=>{
+router.get('/contact',verifyLogin,(req,res)=>{
   let user=req.session.user
   res.render('user/contact',{user})
 })
-router.get('/rating',(req,res)=>{
+router.get('/rating',verifyLogin,(req,res)=>{
   console.log('rating');
   let user=req.session.user
   res.render('user/rating',{user})
 })
-router.post('/book',(req,res)=>{
+router.post('/book',verifyLogin,(req,res)=>{
   req.body.status=1
   console.log(req.body);
   userHelpers.bookNow(req.body).then((response)=>{
     res.redirect('/vehicle-details')
   })
 })
-router.get('/mybookings',(req,res)=>{
+router.get('/mybookings',verifyLogin,(req,res)=>{
   let user=req.session.user
   userHelpers.getBookings(req.session.user._id).then((response)=>{
+    for(let bookings of response){
+      console.log(bookings.status);
+      if(bookings.status == 1){
+        bookings.confirmed=true
+      }else if(bookings.status == 2){
+        bookings.delivered=true
+      }else if(bookings.status == 3){
+        bookings.cancelled=true
+      }else{
+        console.log("Error");
+      }
+    }
+    console.log(response);
+  
     res.render('user/mybookings',{user,response})
   })
  
