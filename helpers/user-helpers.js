@@ -144,7 +144,7 @@ module.exports = {
                  {
                     $project:{
                         
-                      _id:1,fromdate:1,todate:1,message:1,  vehicles: { $arrayElemAt: ['$vehicles', 0] }
+                      _id:1,status:1,fromdate:1,todate:1,message:1,  vehicles: { $arrayElemAt: ['$vehicles', 0] }
                     }
                  }
 
