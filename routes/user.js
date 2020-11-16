@@ -180,22 +180,23 @@ router.post('/book',verifyLogin,(req,res)=>{
 })
 router.get('/mybookings',verifyLogin,(req,res)=>{
   let user=req.session.user
-  userHelpers.getBookings(req.session.user._id).then((response)=>{
-    for(let bookings of response){
-      console.log(bookings.status);
-      if(bookings.status == 1){
-        bookings.confirmed=true
-      }else if(bookings.status == 2){
-        bookings.delivered=true
-      }else if(bookings.status == 3){
-        bookings.cancelled=true
-      }else{
-        console.log("Error");
-      }
-    }
-    console.log(response);
+  userHelpers.getBookings(req.session.user._id).then((bookings)=>{
+    console.log(bookings,"dssfsfsfdsfs");
+    // for(let bookings of response){
+    //   console.log(bookings.status);
+    //   if(bookings.status == 1){
+    //     bookings.confirmed=true
+    //   }else if(bookings.status == 2){
+    //     bookings.delivered=true
+    //   }else if(bookings.status == 3){
+    //     bookings.cancelled=true
+    //   }else{
+    //     console.log("Error");
+    //   }
+    // }
+    // console.log(response);
   
-    res.render('user/mybookings',{user,response})
+     res.render('user/mybookings',{user,bookings})
   })
  
 })

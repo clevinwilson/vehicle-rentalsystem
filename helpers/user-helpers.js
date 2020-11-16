@@ -2,6 +2,7 @@ const { response } = require('express')
 var collection = require('../config/collection')
 const db = require('../config/connection')
 const bcrypt = require('bcrypt')
+const { ObjectID } = require('mongodb')
 var objectId = require('mongodb').ObjectID
 module.exports = {
     getVehicles: () => {
@@ -119,6 +120,7 @@ module.exports = {
         })
     },
     bookNow:(bookingDetails)=>{
+        bookingDetails.vehicleId=ObjectID(bookingDetails.vehicleId)
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.BOOKING_COLLECTION).insertOne(bookingDetails).then((response)=>{
                 resolve(resolve)
@@ -127,7 +129,26 @@ module.exports = {
     },
     getBookings:(userId)=>{
         return new Promise(async(resolve,reject)=>{
-            let userBookings= await db.get().collection(collection.BOOKING_COLLECTION).find({userId:userId}).toArray()
+            let userBookings= await db.get().collection(collection.BOOKING_COLLECTION).aggregate([
+                {
+                    $match:{userId:userId}
+                },
+                {
+                    $lookup:{
+                        from:collection.VEHICLES_COLLECTION,
+                        localField:'vehicleId',
+                        foreignField:'_id',
+                        as:'vehicles'
+                    }
+                },
+                 {
+                    $project:{
+                        
+                      _id:1,fromdate:1,todate:1,message:1,  vehicles: { $arrayElemAt: ['$vehicles', 0] }
+                    }
+                 }
+
+            ]).toArray()
             resolve(userBookings)
         })
     }
