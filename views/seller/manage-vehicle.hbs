@@ -9,7 +9,12 @@
                     <a class="btn btn-success" href="/seller/add-vehicle" style="color: white;">Create vehicle</a>
                     <a class="ml-5 btn btn-danger" href="/seller/manage-vehicle" style="color: white;">Manage vehicles</a>
                 </div>
-                
+                 {{#if responsemessage}}
+                    <div class="alert alert-succes"
+                        style="color:{{responsemessage.color}};background-color:{{responsemessage.backgroundcolor}}">
+                        <strong>{{responsemessage.type}}</strong> {{responsemessage.message}}
+                    </div>
+                    {{/if}}
                 <table class="table" style=" background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <thead style="background-color: #4e73df; color: white;">
                         <tr>
@@ -29,8 +34,9 @@
                             <td class="text-uppercase ">{{this.brandname}}</td>
                             <td class="text-uppercase ">{{this.date}}</td>
                             <td class="text-uppercase ">{{this.priceperday}}</td>
-                            <td style="color: white; width: 144px;"><a style="font-size: 14px;" class="btn btn-info">Edit</a>
-                                <a class="btn btn-danger" style="font-size: 14px;">Delete</a>
+                            <td style="color: white; width: 144px;">
+                                <a href="/seller/edit-vehicle/{{this._id}}" style="font-size: 14px;" class="btn btn-info">Edit</a>
+                                <a class="btn btn-danger" style="font-size: 14px;" onclick="deleteVehicle()">Delete</a>
                             </td>
                         </tr>
                     {{/each}}
@@ -49,3 +55,16 @@
         
     }
 </style>
+<script>
+    function deleteVehicle(){
+            $.ajax({
+                url:'/isuserexist/'+user,
+                method:'get',
+                success:(response)=>{
+                    
+                   
+                    
+                }
+            })
+        }
+</script>

@@ -5,67 +5,60 @@
     <div class="container">
         <div class="row mt-4">
             <div class=" col-12 col-md-12">
-                <div class="pb-2 my-auto text-center">
-                    <a class="btn btn-success" href="/seller/add-vehicle" style="color: white;">Create Vehicles</a>
-                    <a class="ml-5 btn btn-danger" href="/seller/manage-vehicle" style="color: white;">Manage
-                        Vehicles</a>
-                </div>
-                {{#if smess}}
-                <div>
-                    <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
-                </div>
-                {{/if}}
-                <form action="/seller/add-vehicle" method="POST" class="p-4 mb-3 mt-4" enctype="multipart/form-data"
+                <form action="/seller/edit-vehicle" method="POST" class="p-4 mb-3 mt-4" enctype="multipart/form-data"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
                         <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Post a Vehicle</b></p>
                     </div>
                     <div class="row mt-5">
+
                         <div class="form-group col-md-6 ">
                             <label for="vehiclename">Vehicle Name</label>
-                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="vehiclename" name="vehiclename"
-                                placeholder="Vehicle Name">
+                            <input style="border-color:#b4e3eb;" type="text" value="{{vehicle.vehiclename}}"
+                                class="form-control " id="vehiclename" name="vehiclename" placeholder="Vehicle Name">
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="brandname">Brand Name</label>
-                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="brandname" name="brandname"
-                                placeholder="Brand Name">
+                            <input style="border-color:#b4e3eb;" type="text" value="{{vehicle.brandname}}"
+                                class="form-control " id="brandname" name="brandname" placeholder="Brand Name">
                         </div>
                         <div class="form-group col-md-12 mt-1 ">
                             <label for="vehicleoverview">Vehicle Overview</label>
-                            <textarea style="border-color:#b4e3eb;" type="text" class="form-control " id="vehicleoverview" name="vehicleoverview"
-                                placeholder="Overview"></textarea>
+                            <textarea style="border-color:#b4e3eb;" type="text" class="form-control "
+                                id="vehicleoverview" name="vehicleoverview"
+                                placeholder="Overview">{{vehicle.vehicleoverview}}</textarea>
                         </div>
                         <div class="form-group col-md-7 ">
                             <label for="priceperday">Price Per day</label>
-                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="priceperday" name="priceperday"
-                                placeholder="Price Per day">
+                            <input style="border-color:#b4e3eb;" type="text" value="{{vehicle.priceperday}}"
+                                class="form-control " id="priceperday" name="priceperday" placeholder="Price Per day">
                         </div>
                         <div class="form-group col-12 col-md-5 ">
                             <label for="cars">Fuel type</label><br>
-                            <select 
+                            <select
                                 style="color: #fff;background-color:#3cc0d3;border-color: #36b9cc;border-radius: 3px;font-size: 17px;padding: 6px;"
                                 id="fueltype" name="fueltype">
                                 <option style="font-size: 14px;" value="">Select</option>
                                 {{#each fuel}}
-                                <option style="font-size: 14px;" name="fuel" value="{{this.fuelname}}">{{this.fuelname}}</option>
+                                <option style="font-size: 14px;" value="{{this.fuelname}}">{{this.fuelname}}</option>
                                 {{/each}}
                             </select>
 
                         </div>
                         <div class="form-group col-md-7 mt-1 ">
                             <label for="modelyear">Model year</label>
-                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="modelyear" name="modelyear"
-                                placeholder="Model year">
+                            <input style="border-color:#b4e3eb;" value="{{vehicle.modelyear}}" type="text"
+                                class="form-control " id="modelyear" name="modelyear" placeholder="Model year">
                         </div>
                         <div class="form-group col-md-5 ">
                             <label for="seatingcapacity">Seating Capacity</label>
-                            <input style="border-color:#b4e3eb;" type="text" class="form-control " id="seatingcapacity" name="seatingcapacity"
+                            <input style="border-color:#b4e3eb;" value="{{vehicle.seatingcapacity}}" type="text"
+                                class="form-control " id="seatingcapacity" name="seatingcapacity"
                                 placeholder="Seating Capacity">
                         </div>
                         <div class="form-group  col-md-7 ">
                             <label for="busdriver">Bus Driver</label><br>
-                            <select 
+                            <select
                                 style="color: #fff;background-color: #f6c23e;border-color: #f6c23e;border-radius: 3px;font-size: 17px;padding: 6px;"
                                 id="busdriver" name="busdriver">
                                 <option style="  font-size: 14px;" value="">Select</option>
@@ -97,23 +90,33 @@
                     <div class="row p-3">
                         <div class="form-group col-md-4">
                             <label>Image 1</label>
-                            <input  type="file" class="form-control" name="Image1">
+                            <img src="/vehicle-images/{{vehicle._id}}{{vehicle.img1}}" width="300" height="200"
+                                style="border:solid 1px #000">
+                            <input type="file" class="form-control mt-3" value="sfsfs" name="Image1">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Image 2</label>
-                            <input type="file" class="form-control" name="Image2">
+                            <img src="/vehicle-images/{{vehicle._id}}{{vehicle.img2}}" width="300" height="200"
+                                style="border:solid 1px #000">
+                            <input type="file" class="form-control mt-3" name="Image2">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Image 3</label>
-                            <input type="file" class="form-control" name="Image3">
+                            <img src="/vehicle-images/{{vehicle._id}}{{vehicle.img3}}" width="300" height="200"
+                                style="border:solid 1px #000">
+                            <input type="file" class="form-control mt-3" name="Image3">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Image 4</label>
-                            <input type="file" class="form-control" name="Image4">
+                            <img src="/vehicle-images/{{vehicle._id}}{{vehicle.img4}}" width="300" height="200"
+                                style="border:solid 1px #000">
+                            <input type="file" class="form-control mt-3" name="Image4">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Image 5</label>
-                            <input type="file" class="form-control" name="Image5">
+                            <img src="/vehicle-images/{{vehicle._id}}{{vehicle.img5}}" width="300" height="200"
+                                style="border:solid 1px #000">
+                            <input type="file" class="form-control mt-3" name="Image5">
                         </div>
                     </div>
                     <hr>
@@ -121,88 +124,191 @@
                         <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Accessories</b></p>
                     </div>
                     <div class="row mt-3 p-3">
+                        {{#if vehicle.autoairconditioner}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="autoairconditioner" name="autoairconditioner" checked
+                                    value="1">
+                                <label for="autoairconditioner">Automatic Air Conditioner </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="autoairconditioner" name="autoairconditioner" value="1">
                                 <label for="autoairconditioner">Automatic Air Conditioner </label>
                             </div>
                         </div>
+                        {{/if}}
+                        {{#if vehicle.panoramicsunroof}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
-                                <input  type="checkbox" id="panoramicsunroof" name="panoramicsunroof" value="1">
+                                <input type="checkbox" id="panoramicsunroof" name="panoramicsunroof" checked value="1">
                                 <label for="panoramicsunroof"> Panoramic sunroof </label>
                             </div>
                         </div>
+                        {{else}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="panoramicsunroof" name="panoramicsunroof" value="1">
+                                <label for="panoramicsunroof"> Panoramic sunroof </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{#if vehicle.antilockbrakingsys}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" checked
+                                    value="1">
+                                <label for="antilockbrakingsys"> AntiLock Braking System </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1">
                                 <label for="antilockbrakingsys"> AntiLock Braking System </label>
                             </div>
                         </div>
+                        {{/if}}
+                        {{#if vehicle.brakeassist}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="brakeassist" name="brakeassist" checked value="1">
+                                <label for="brakeassist"> Brake Assist </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="brakeassist" name="brakeassist" value="1">
                                 <label for="brakeassist"> Brake Assist </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.autopilot}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="autopilot" name="autopilot" checked value="1">
+                                <label for="autopilot">Autopilot </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="autopilot" name="autopilot" value="1">
                                 <label for="autopilot">Autopilot </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.driverairbag}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="driverairbag" name="driverairbag" checked value="1">
+                                <label for="driverairbag">Driver Airbag</label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="driverairbag" name="driverairbag" value="1">
                                 <label for="driverairbag">Driver Airbag</label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.passengerairbag}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="passengerairbag" name="passengerairbag" checked value="1">
+                                <label for="passengerairbag"> Passenger Airbag </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="passengerairbag" name="passengerairbag" value="1">
                                 <label for="passengerairbag"> Passenger Airbag </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.powerwindow}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="powerwindow" name="powerwindow" checked value="1">
+                                <label for="powerwindow"> Power Windows </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
                                 <label for="powerwindow"> Power Windows </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.touchscreenmultimedia}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="touchscreenmultimedia" checked name="touchscreenmultimedia"
+                                    value="1">
+                                <label for="touchscreenmultimedia">Touch Screen Multimedia </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="touchscreenmultimedia" name="touchscreenmultimedia"
                                     value="1">
                                 <label for="touchscreenmultimedia">Touch Screen Multimedia </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.centrallocking}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox h checkbox-inline">
+                                <input type="checkbox" id="centrallocking" name="centrallocking" checked value="1">
+                                <label for="centrallocking">Central Locking</label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox h checkbox-inline">
                                 <input type="checkbox" id="centrallocking" name="centrallocking" value="1">
                                 <label for="centrallocking">Central Locking</label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.crashcensor}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="crashcensor" name="crashcensor" checked value="1">
+                                <label for="crashcensor"> Crash Sensor </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="crashcensor" name="crashcensor" value="1">
                                 <label for="crashcensor"> Crash Sensor </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        {{#if vehicle.leatherseats}}
+                        <div class="form-group col-md-4">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="leatherseats" name="leatherseats" checked value="1">
+                                <label for="leatherseats"> Leather Seats </label>
+                            </div>
+                        </div>
+                        {{else}}
                         <div class="form-group col-md-4">
                             <div class="checkbox checkbox-inline">
                                 <input type="checkbox" id="leatherseats" name="leatherseats" value="1">
                                 <label for="leatherseats"> Leather Seats </label>
                             </div>
-
                         </div>
+                        {{/if}}
+                        <input type="text" for="id" style="display: none;" value="{{vehicle._id}}" name="vid">
 
                     </div>
                     <br>

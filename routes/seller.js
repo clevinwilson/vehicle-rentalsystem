@@ -145,13 +145,14 @@ router.post('/add-vehicle', (req, res) => {
       }
     })
   })
-  res.redirect('/seller/add-vehicle')
+  res.redirect('/seller/add-vehicle',)
 })
 router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let vehicles = await vehicleHelpers.getVehicles(req.session.seller._id)
   console.log(vehicles);
-  res.render('seller/manage-vehicle', { vehicles, seller })
+  res.render('seller/manage-vehicle', { vehicles, seller,"responsemessage":req.session.responsemessage})
+  req.session.responsemessage=null
 })
 router.get('/driver', verifyLogin, (req, res) => {
   let seller = req.session.seller
@@ -172,7 +173,79 @@ router.get('/manage-driver', verifyLogin, async (req, res) => {
   console.log(drivers);
   res.render('seller/manage-driver', { seller, drivers })
 })
+router.get('/edit-vehicle/:id',verifyLogin,async(req,res)=>{
+  let seller = req.session.seller
+  console.log(req.params.id);
+  let fuel = await vehicleHelpers.getfuel()
+  let vehicle = await vehicleHelpers.getvehicleDetails(req.params.id)
+  console.log(vehicle,"lllll");
+  res.render('seller/edit-vehicle',{seller,vehicle,fuel})
+})
+router.post('/edit-vehicle',(req,res)=>{
+  console.log(req.body);
+  vehicleHelpers.editVehicle(req.body,req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((response)=>{
+    let Image1 = req.files.Image1
+    Image1.mv('./public/vehicle-images/' + req.body.vid + req.files.Image1.name, (err, done) => {
+      if (!err) {
+        console.log('Image 1 inserted');
+      } else {
+        console.log(err);
+      }
+    })
 
+
+    let Image2 = req.files.Image2
+    Image2.mv('./public/vehicle-images/' + req.body.vid + req.files.Image2.name, (err, done) => {
+      if (!err) {
+        console.log('Image 2 inserted');
+      } else {
+        console.log(err);
+      }
+    })
+
+
+    let Image3 = req.files.Image3
+    Image3.mv('./public/vehicle-images/' + req.body.vid + req.files.Image3.name, (err, done) => {
+      if (!err) {
+        console.log('Image 3 inserted');
+      } else {
+        console.log(err);
+      }
+    })
+
+
+    let Image4 = req.files.Image4
+    Image4.mv('./public/vehicle-images/' + req.body.vid + req.files.Image4.name, (err, done) => {
+      if (!err) {
+        console.log('Image 4 inserted');
+      } else {
+        console.log(err);
+      }
+    })
+
+
+    let Image5 = req.files.Image5
+    Image5.mv('./public/vehicle-images/' + req.body.vid + req.files.Image5.name, (err, done) => {
+      if (!err) {
+        console.log('donImage 5 insertede');
+      } else {
+        console.log(err);
+      }
+    })
+   
+      req.session.responsemessage = {
+        type: "Success!",
+        message: " updated successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.redirect('/seller/manage-vehicle')
+   
+  })
+})
+router.get('/delete-vehicle',(req,res)=>{
+  console.log('delete');
+})
 
 
 module.exports = router;

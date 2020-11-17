@@ -2,6 +2,7 @@ var collection = require('../config/collection')
 const db = require('../config/connection')
 const bcrypt = require('bcrypt')
 const { response } = require('express')
+const { ObjectID } = require('mongodb')
 var objectId = require('mongodb').ObjectID
 
 module.exports = {
@@ -77,6 +78,32 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let buses=await db.get().collection(collection.VEHICLES_COLLECTION).find({vehicletype:"bus"}).toArray()
             resolve(buses)
+        })
+    },
+    editVehicle:(vehicleDetails,image1,image2,image3,image4,image5)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.VEHICLES_COLLECTION)
+            .updateOne({_id:objectId(vehicleDetails.vid)},{
+                $set:{
+                    vehiclename:vehicleDetails.vehiclename,
+                    brandname:vehicleDetails.brandname,
+                    vehicleoverview:vehicleDetails.vehicleoverview,
+                    priceperday:vehicleDetails.priceperday,
+                    fueltype:vehicleDetails.fueltype,
+                    modelyear:vehicleDetails.modelyear,
+                    seatingcapacity:vehicleDetails.seatingcapacity,
+                    busdriver:vehicleDetails.busdriver,
+                    cartype:vehicleDetails.cartype,
+                    img1:image1,
+                    img2:image2,
+                    img3:image3,
+                    img4:image4,
+                    img5:image5
+                    
+                }
+            }).then((response)=>{
+                resolve(response)
+            })
         })
     }
 }
