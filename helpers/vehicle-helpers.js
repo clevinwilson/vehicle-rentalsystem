@@ -112,5 +112,11 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    editFuel:(fuelId)=>{
+        return new Promise(async(resolve,reject)=>{
+           let fuel =await db.get().collection(collection.FUEL_COLLECTION).findOne({_id:objectId(fuelId)})
+           resolve(fuel)
+        })
     }
 }

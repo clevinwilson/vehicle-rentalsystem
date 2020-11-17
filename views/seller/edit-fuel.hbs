@@ -1,0 +1,29 @@
+
+<div>
+    <h2 class="text-center mt-3"> Manage Fuel type</h2>
+</div>
+<section>
+    <div class="container">
+        <div class="row mt-5">
+            <div class=" col-12 col-md-12">
+                
+              
+                <form action="/seller/add-fuel" method="POST" class="p-4"
+                    style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
+                    <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
+                        <p class="mt-1" style="color: #4e73df; margin-left: 12px;"><b>Enter the Fuel type</b></p>
+                    </div>
+                    <div class="form-group mt-5">
+                        <label for="fuelname">Fuel type</label>
+                        <input type="text" class="form-control col-md-12 mt-2" value="{{fuel.fuelname}}" id="fuelname" name="fuelname"
+                            placeholder="Fuel">
+                    </div>
+                    <br>
+                    <button type="submit"  class="btn btn-primary mr-auto">Submit</button>
+                    <div class="listing-title">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

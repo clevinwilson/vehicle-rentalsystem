@@ -22,14 +22,14 @@ router.post('/sellersignup', (req, res) => {
   console.log(req.body);
   sellerHelpers.sellerSignup(req.body).then((response) => {
     console.log(response);
-    if(response.status){
+    if (response.status) {
       res.redirect('/seller/seller-signup')
-    }else{
+    } else {
       req.session.loggedIn = true
       req.session.seller = response
       res.render('seller/dashboard', { seller: req.session.seller })
     }
-   
+
   })
 })
 router.post('/sellerlogin', (req, res) => {
@@ -86,8 +86,8 @@ router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let fuel = await vehicleHelpers.getfuel()
   console.log(fuel);
-  res.render('seller/add-vehicle', { seller, fuel, smess,"addvehicleresponsemessage":req.session.addvehicleresponsemessage })
-  req.session.addvehicleresponsemessage=null
+  res.render('seller/add-vehicle', { seller, fuel, smess, "addvehicleresponsemessage": req.session.addvehicleresponsemessage })
+  req.session.addvehicleresponsemessage = null
 })
 
 
@@ -143,7 +143,7 @@ router.post('/add-vehicle', (req, res) => {
         console.log(err);
       }
     })
-    if(response){
+    if (response) {
       req.session.addvehicleresponsemessage = {
         type: "Success!",
         message: " Vehicle added successfully",
@@ -151,7 +151,7 @@ router.post('/add-vehicle', (req, res) => {
         backgroundcolor: "#d4edda"
       }
       res.redirect('/seller/add-vehicle',)
-    }else{
+    } else {
       req.session.addvehicleresponsemessage = {
         type: "Error!",
         message: "Something went wrong",
@@ -166,8 +166,8 @@ router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let vehicles = await vehicleHelpers.getVehicles(req.session.seller._id)
   console.log(vehicles);
-  res.render('seller/manage-vehicle', { vehicles, seller,"responsemessage":req.session.responsemessage})
-  req.session.responsemessage=null
+  res.render('seller/manage-vehicle', { vehicles, seller, "responsemessage": req.session.responsemessage })
+  req.session.responsemessage = null
 })
 router.get('/driver', verifyLogin, (req, res) => {
   let seller = req.session.seller
@@ -188,17 +188,17 @@ router.get('/manage-driver', verifyLogin, async (req, res) => {
   console.log(drivers);
   res.render('seller/manage-driver', { seller, drivers })
 })
-router.get('/edit-vehicle/:id',verifyLogin,async(req,res)=>{
+router.get('/edit-vehicle/:id', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   console.log(req.params.id);
   let fuel = await vehicleHelpers.getfuel()
   let vehicle = await vehicleHelpers.getvehicleDetails(req.params.id)
-  console.log(vehicle,"lllll");
-  res.render('seller/edit-vehicle',{seller,vehicle,fuel})
+  console.log(vehicle, "lllll");
+  res.render('seller/edit-vehicle', { seller, vehicle, fuel })
 })
-router.post('/edit-vehicle',(req,res)=>{
+router.post('/edit-vehicle', (req, res) => {
   console.log(req.body);
-  vehicleHelpers.editVehicle(req.body,req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((response)=>{
+  vehicleHelpers.editVehicle(req.body, req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((response) => {
     let Image1 = req.files.Image1
     Image1.mv('./public/vehicle-images/' + req.body.vid + req.files.Image1.name, (err, done) => {
       if (!err) {
@@ -247,37 +247,43 @@ router.post('/edit-vehicle',(req,res)=>{
         console.log(err);
       }
     })
-   
-      req.session.responsemessage = {
-        type: "Success!",
-        message: " updated successfully",
-        color: "#155724",
-        backgroundcolor: "#d4edda"
-      }
-      res.redirect('/seller/manage-vehicle')
-   
+
+    req.session.responsemessage = {
+      type: "Success!",
+      message: " updated successfully",
+      color: "#155724",
+      backgroundcolor: "#d4edda"
+    }
+    res.redirect('/seller/manage-vehicle')
+
   })
 })
-router.get('/deleteVehicle/:vId',(req,res)=>{
-  vehicleHelpers.deleteVehicle(req.params.vId).then((response)=>{
+router.get('/deleteVehicle/:vId', (req, res) => {
+  vehicleHelpers.deleteVehicle(req.params.vId).then((response) => {
     console.log(response);
-    if(response){
+    if (response) {
       req.session.responsemessage = {
         type: "Success!",
         message: " Deleted successfully",
         color: "#155724",
         backgroundcolor: "#d4edda"
       }
-      res.json({status:true})
-    }else{
+      res.json({ status: true })
+    } else {
       req.session.responsemessage = {
         type: "Error!",
         message: "something went wrong",
         color: "red",
         backgroundcolor: "#e38494"
       }
-      res.json({status:false})
+      res.json({ status: false })
     }
+  })
+})
+router.get('/edit-fuel/:id', verifyLogin, (req, res) => {
+  let seller = req.session.seller
+  vehicleHelpers.editFuel(req.params.id).then((fuel) => {
+    res.render('seller/edit-fuel', { fuel, seller })
   })
 })
 
