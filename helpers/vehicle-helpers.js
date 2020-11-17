@@ -105,5 +105,12 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    deleteVehicle:(vehicleId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.VEHICLES_COLLECTION).removeOne({_id:objectId(vehicleId)}).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

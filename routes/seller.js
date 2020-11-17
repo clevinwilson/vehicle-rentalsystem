@@ -243,8 +243,27 @@ router.post('/edit-vehicle',(req,res)=>{
    
   })
 })
-router.get('/delete-vehicle',(req,res)=>{
-  console.log('delete');
+router.get('/deleteVehicle/:vId',(req,res)=>{
+  vehicleHelpers.deleteVehicle(req.params.vId).then((response)=>{
+    console.log(response);
+    if(response){
+      req.session.responsemessage = {
+        type: "Success!",
+        message: " Deleted successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.json({status:true})
+    }else{
+      req.session.responsemessage = {
+        type: "Error!",
+        message: "something went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+      res.json({status:false})
+    }
+  })
 })
 
 

@@ -37,7 +37,6 @@ router.post('/usersignup', (req, res) => {
 
 })
 router.get('/isuserexist/:user', (req, res) => {
-  console.log(req.params.user);
   userHelpers.isUserExist(req.params.user).then((response) => {
     console.log(response);
     res.json(response)
@@ -126,7 +125,7 @@ router.post('/change-profile', verifyLogin, (req, res) => {
     } else {
       req.session.responsemessage = {
         type: "Error!",
-        message: "Profile updated successfully",
+        message: "error",
         color: "red",
         backgroundcolor: "#e38494"
       }
