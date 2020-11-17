@@ -1,18 +1,25 @@
 <section>
     <div>
-    <h2 class="text-center m-4"> Manage Fuel type</h2>
-</div>
+        <h2 class="text-center m-4"> Manage Fuel type</h2>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="pb-5 my-auto text-center mt-3">
-                    <a class="btn btn-success" href="/seller/create-fuel-type" style="color: white;">Create Fuel types</a>
+                    <a class="btn btn-success" href="/seller/create-fuel-type" style="color: white;">Create Fuel
+                        types</a>
                     <a class="ml-5 btn btn-danger" href="/seller/manage-fueltype" style="color: white;">Manage Fuel </a>
                 </div>
                 {{#if fuelresponsemessage}}
                 <div class="alert alert-succes"
                     style="color:{{fuelresponsemessage.color}};background-color:{{fuelresponsemessage.backgroundcolor}}">
                     <strong>{{fuelresponsemessage.type}}</strong> {{fuelresponsemessage.message}}
+                </div>
+                {{/if}}
+                {{#if fueldeleteresponsemessage}}
+                <div class="alert alert-succes"
+                    style="color:{{fueldeleteresponsemessage.color}};background-color:{{fueldeleteresponsemessage.backgroundcolor}}">
+                    <strong>{{fueldeleteresponsemessage.type}}</strong> {{fueldeleteresponsemessage.message}}
                 </div>
                 {{/if}}
                 <table class="table" style=" background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
@@ -28,35 +35,38 @@
                         <tr>
                             <th scope="row">{{this._id}}</th>
                             <td class="text-uppercase ">{{this.fuelname}}</td>
-                            <td style="color: white;"> <a style="font-size: 14px;" href="/seller/edit-fuel/{{this._id}}" class="btn btn-info">Edit</a>
-                                <a class="btn btn-danger" onclick="deletefuel('{{this._id}}')" style="font-size: 14px;">Delete</a>
+                            <td style="color: white;"> <a style="font-size: 14px;" href="/seller/edit-fuel/{{this._id}}"
+                                    class="btn btn-info">Edit</a>
+                                <a class="btn btn-danger"
+                                    onclick="if(confirm('Are you want to delete {{this.fuelname}} ?')) deletefuel('{{this._id}}')"
+                                    style="font-size: 14px;">Delete</a>
                             </td>
                         </tr>
-                    {{/each}}
+                        {{/each}}
                     </tbody>
                 </table>
 
-                
+
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    tr:hover{
+    tr:hover {
         box-shadow: 1px 0px 22px -1px #888888;
-        
+
     }
 </style>
 <script>
     function deletefuel(fuelId) {
-        let vId = parseInt(vehicleId)
+        let vId = parseInt(fuelId)
         $.ajax({
-            url: '/seller/deleteVehicle/' + vehicleId,
+            url: '/seller/deleteFuel/' + fuelId,
             method: 'get',
             success: (response) => {
                 if (response.status) {
-                   location.reload()
+                    location.reload()
                 }
             }
         })

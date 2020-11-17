@@ -76,9 +76,10 @@ router.get('/sellerlogout', (req, res) => {
 router.get('/manage-fueltype', verifyLogin, (req, res) => {
   let seller = req.session.seller
   vehicleHelpers.getfuel().then((fuel) => {
-    res.render('seller/manage-fueltype', { seller,fuel, "fuelresponsemessage":req.session.fuelresponsemessage  })
+    res.render('seller/manage-fueltype', { seller,fuel, "fuelresponsemessage":req.session.fuelresponsemessage,'fueldeleteresponsemessage':req.session.fueldeleteresponsemessage  })
   })
-
+  req.session.fuelresponsemessage=null
+  req.session.fueldeleteresponsemessage=null
 })
 
 
@@ -305,6 +306,27 @@ router.post('/edit-fuel',verifyLogin,(req,res)=>{
       }
     }
    res.redirect('/seller/manage-fueltype')
+  })
+})
+router.get('/deleteFuel/:id',verifyLogin,(req,res)=>{
+  vehicleHelpers.deletFuel(req.params.id).then((response)=>{
+    if(response){
+      req.session.fueldeleteresponsemessage = {
+        type: "Success!",
+        message: " Deleted successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.json({ status: true })
+    }else{
+      req.session.fueldeleteresponsemessage = {
+        type: "Error!",
+        message: "Alredy went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+      res.json({ status: false })
+    }
   })
 })
 

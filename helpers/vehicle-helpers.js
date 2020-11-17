@@ -3,6 +3,7 @@ const db = require('../config/connection')
 const bcrypt = require('bcrypt')
 const { response } = require('express')
 const { ObjectID } = require('mongodb')
+const { enable } = require('debug')
 var objectId = require('mongodb').ObjectID
 
 module.exports = {
@@ -136,5 +137,12 @@ module.exports = {
             }
         })
 
+    },
+    deletFuel:(fuelId)=>{
+        return new Promise((resolve,response)=>{
+            db.get().collection(collection.FUEL_COLLECTION).removeOne({_id:objectId(fuelId)}).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }
