@@ -86,15 +86,14 @@ router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let fuel = await vehicleHelpers.getfuel()
   console.log(fuel);
-  res.render('seller/add-vehicle', { seller, fuel, smess })
-
+  res.render('seller/add-vehicle', { seller, fuel, smess,"addvehicleresponsemessage":req.session.addvehicleresponsemessage })
+  req.session.addvehicleresponsemessage=null
 })
 
 
 router.post('/add-vehicle', (req, res) => {
   let sellerId = req.session.seller._id
   vehicleHelpers.addVehicles(sellerId, req.body, req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((id) => {
-    console.log(id);
 
     let Image1 = req.files.Image1
     Image1.mv('./public/vehicle-images/' + id + req.files.Image1.name, (err, done) => {
@@ -144,8 +143,24 @@ router.post('/add-vehicle', (req, res) => {
         console.log(err);
       }
     })
+    if(response){
+      req.session.addvehicleresponsemessage = {
+        type: "Success!",
+        message: " Vehicle added successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.redirect('/seller/add-vehicle',)
+    }else{
+      req.session.addvehicleresponsemessage = {
+        type: "Error!",
+        message: "Something went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+      res.redirect('/seller/add-vehicle',)
+    }
   })
-  res.redirect('/seller/add-vehicle',)
 })
 router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller

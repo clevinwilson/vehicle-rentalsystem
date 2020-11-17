@@ -39,7 +39,7 @@
                                 <a href="/seller/edit-vehicle/{{this._id}}" style="font-size: 14px;"
                                     class="btn btn-info">Edit</a>
                                 <a class="btn btn-danger" style="font-size: 14px;"
-                                    onclick="deleteVehicle('{{this._id}}')">Delete</a>
+                                    onclick="if(confirm('Are you want to delete {{this.vehiclename}} ?')) deleteVehicle('{{this._id}}')  ">Delete</a>
                             </td>
                         </tr>
                         {{/each}}

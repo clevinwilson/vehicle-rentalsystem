@@ -10,9 +10,10 @@
                     <a class="ml-5 btn btn-danger" href="/seller/manage-vehicle" style="color: white;">Manage
                         Vehicles</a>
                 </div>
-                {{#if smess}}
-                <div>
-                    <span style="color: tomato;" id="mess"><b>{{smess.mess}}</b><br></span><br>
+               {{#if addvehicleresponsemessage}}
+                <div class="alert alert-succes"
+                    style="color:{{addvehicleresponsemessage.color}};background-color:{{addvehicleresponsemessage.backgroundcolor}}">
+                    <strong>{{addvehicleresponsemessage.type}}</strong> {{addvehicleresponsemessage.message}}
                 </div>
                 {{/if}}
                 <form action="/seller/add-vehicle" method="POST" class="p-4 mb-3 mt-4" enctype="multipart/form-data"
