@@ -76,7 +76,7 @@ router.get('/sellerlogout', (req, res) => {
 router.get('/manage-fueltype', verifyLogin, (req, res) => {
   let seller = req.session.seller
   vehicleHelpers.getfuel().then((fuel) => {
-    res.render('seller/manage-fueltype', { seller, fuel })
+    res.render('seller/manage-fueltype', { seller,fuel, "fuelresponsemessage":req.session.fuelresponsemessage  })
   })
 
 })
@@ -283,7 +283,28 @@ router.get('/deleteVehicle/:vId', (req, res) => {
 router.get('/edit-fuel/:id', verifyLogin, (req, res) => {
   let seller = req.session.seller
   vehicleHelpers.editFuel(req.params.id).then((fuel) => {
-    res.render('seller/edit-fuel', { fuel, seller })
+    res.render('seller/edit-fuel', { fuel, seller})
+  })
+})
+router.post('/edit-fuel',verifyLogin,(req,res)=>{
+  console.log(req.body);
+  vehicleHelpers.updateFuel(req.body).then((response)=>{
+    if(response.status){
+      req.session.fuelresponsemessage = {
+        type: "Success!",
+        message: " Updated successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+    }else{
+      req.session.fuelresponsemessage = {
+        type: "Error!",
+        message: "Alredy went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+    }
+   res.redirect('/seller/manage-fueltype')
   })
 })
 

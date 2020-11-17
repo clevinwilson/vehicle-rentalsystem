@@ -9,7 +9,12 @@
                     <a class="btn btn-success" href="/seller/create-fuel-type" style="color: white;">Create Fuel types</a>
                     <a class="ml-5 btn btn-danger" href="/seller/manage-fueltype" style="color: white;">Manage Fuel </a>
                 </div>
-                
+                {{#if fuelresponsemessage}}
+                <div class="alert alert-succes"
+                    style="color:{{fuelresponsemessage.color}};background-color:{{fuelresponsemessage.backgroundcolor}}">
+                    <strong>{{fuelresponsemessage.type}}</strong> {{fuelresponsemessage.message}}
+                </div>
+                {{/if}}
                 <table class="table" style=" background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <thead style="background-color: #4e73df; color: white;">
                         <tr>
@@ -24,7 +29,7 @@
                             <th scope="row">{{this._id}}</th>
                             <td class="text-uppercase ">{{this.fuelname}}</td>
                             <td style="color: white;"> <a style="font-size: 14px;" href="/seller/edit-fuel/{{this._id}}" class="btn btn-info">Edit</a>
-                                <a class="btn btn-danger" style="font-size: 14px;">Delete</a>
+                                <a class="btn btn-danger" onclick="deletefuel('{{this._id}}')" style="font-size: 14px;">Delete</a>
                             </td>
                         </tr>
                     {{/each}}
@@ -43,3 +48,17 @@
         
     }
 </style>
+<script>
+    function deletefuel(fuelId) {
+        let vId = parseInt(vehicleId)
+        $.ajax({
+            url: '/seller/deleteVehicle/' + vehicleId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                   location.reload()
+                }
+            }
+        })
+    }
+</script>

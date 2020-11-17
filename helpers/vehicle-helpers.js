@@ -118,5 +118,23 @@ module.exports = {
            let fuel =await db.get().collection(collection.FUEL_COLLECTION).findOne({_id:objectId(fuelId)})
            resolve(fuel)
         })
+    },
+    updateFuel:(details)=>{
+        return new Promise(async(resolve,reject)=>{
+            let fuel= await db.get().collection(collection.FUEL_COLLECTION).findOne({fuelname:details.fuelname})
+            if(fuel){
+                resolve({status:false})
+            }else{
+                db.get().collection(collection.FUEL_COLLECTION)
+            .updateOne({_id:objectId(details.fuelid)},{
+                $set:{
+                    fuelname:details.fuelname
+                }
+            }).then((response)=>{
+                resolve(response)
+            })
+            }
+        })
+
     }
 }
