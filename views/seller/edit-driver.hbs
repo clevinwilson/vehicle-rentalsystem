@@ -5,12 +5,11 @@
     <div class="container">
         <div class="row mt-4">
             <div class=" col-12 col-md-12">
-                <div class="pb-3 my-auto text-center">
+                {{!-- <div class="pb-3 my-auto text-center">
                     <a class="btn btn-success" href="/seller/driver" style="color: white;">Create Driver</a>
                     <a class="ml-5 btn btn-danger" href="/seller/manage-driver" style="color: white;">Manage
                         Driver</a>
-                </div>
-                
+                </div> --}}
                 <form action="/seller/edit-driver" method="POST" class="p-4"
                     style=" border-radius: 12px;background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <div class="row p-1" style="background-color: #f3f4f9;     border-radius: 6px;">
@@ -19,30 +18,30 @@
                     <div class="row">
                         <div class="form-group mt-2 col-md-6">
                             <label for="drivername">Driver Name</label>
-                            <input style="border-color:#b4e3eb;" type="text" value="{{driverDetails.drivername}}" class="form-control col-md-12 mt-2" id="drivername" name="drivername"
+                            <input style="border-color:#b4e3eb;" type="text" value="{{details.drivername}}" class="form-control col-md-12 mt-2" id="drivername" name="drivername"
                                 placeholder="Driver Name">
                         </div>
                         <div class="form-group mt-2 col-md-6">
                             <label for="driveremail">Driver Email</label>
-                            <input style="border-color:#b4e3eb;" type="text" value="{{driverDetails.driveremail}}" class="form-control col-md-12 mt-2" id="driveremail" name="driveremail"
+                            <input style="border-color:#b4e3eb;" type="text" value="{{details.driveremail}}" class="form-control col-md-12 mt-2" id="driveremail" name="driveremail"
                                 placeholder="Driver Email">
                         </div>
                         <div class="form-group mt-2 col-md-6">
                             <label for="driverphone">Driver Phone.No</label>
-                            <input style="border-color:#b4e3eb;" type="number" value="{{driverDetails.driverphone}}" class="form-control col-md-12 mt-2" id="driverphone" name="driverphone"
+                            <input style="border-color:#b4e3eb;" type="number" value="{{details.driverphone}}" class="form-control col-md-12 mt-2" id="driverphone" name="driverphone"
                                 placeholder="Driver Phone.No">
                         </div>
                         <div class="form-group mt-2 col-md-6">
                             <label for="driverlicense">Driver License No</label>
-                            <input style="border-color:#b4e3eb;" type="text" value="{{driverDetails.driverlicense}}" class="form-control col-md-12 mt-2" id="driverlicense" name="driverlicense"
+                            <input style="border-color:#b4e3eb;" type="text" value="{{details.driverlicense}}" class="form-control col-md-12 mt-2" id="driverlicense" name="driverlicense"
                                 placeholder="Driver License No">
                         </div>
                         <div class="form-group mt-2 col-md-12">
                             <label for="driveraddress">Driver Address</label>
                             <textarea style="border-color:#b4e3eb;" type="text"  class="form-control col-md-12 mt-2" id="driveraddress" name="driveraddress"
-                                placeholder="Driver Address">{{driverDetails.driveraddress}}</textarea>
+                                placeholder="Driver Address">{{details.driveraddress}}</textarea>
                         </div>
-                        <input style="border-color:#b4e3eb; display: none;" type="text" value="{{driverDetails._id}}" class="form-control col-md-12 mt-2" id="driverid" name="driverid">
+                        <input style="border-color:#b4e3eb; display: none;" type="text" value="{{details._id}}" class="form-control col-md-12 mt-2" id="driverid" name="driverid">
                         </div>
                        <center><button  type="submit" class="btn btn-primary mt-3">Submit</button></center>
                         <div class="listing-title">

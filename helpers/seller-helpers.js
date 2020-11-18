@@ -80,5 +80,21 @@ module.exports={
             let driverDetails=await db.get().collection(collection.DRIVER_COLLECTION).findOne({_id:objectId(driverId)})
             resolve(driverDetails)
         })
+    },
+    editdriver:(driverDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.DRIVER_COLLECTION)
+            .updateOne({_id:objectId(driverDetails.driverid)},{
+                $set:{
+                    drivername:driverDetails.drivername,
+                    driveremail:driverDetails.driveremail,
+                    driverphone:driverDetails.driverphone,
+                    driverlicense:driverDetails.driverlicense,
+                    driveraddress:driverDetails.driveraddress,
+                }
+            }).then((response)=>{
+                resolve({status:true})
+            })
+        })
     }
 }

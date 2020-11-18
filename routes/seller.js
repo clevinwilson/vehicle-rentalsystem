@@ -187,7 +187,8 @@ router.get('/manage-driver', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let drivers = await sellerHelpers.getDriver()
   console.log(drivers);
-  res.render('seller/manage-driver', { seller, drivers })
+  res.render('seller/manage-driver', { seller, drivers,"driverupdateresponsemessage":req.session.driverupdateresponsemessage })
+  req.session.driverupdateresponsemessage=null
 })
 router.get('/edit-vehicle/:id', verifyLogin, async (req, res) => {
   let seller = req.session.seller
@@ -273,7 +274,7 @@ router.get('/deleteVehicle/:vId', (req, res) => {
     } else {
       req.session.responsemessage = {
         type: "Error!",
-        message: "something went wrong",
+        message: "Something went wrong",
         color: "red",
         backgroundcolor: "#e38494"
       }
@@ -329,13 +330,33 @@ router.get('/deleteFuel/:id',verifyLogin,(req,res)=>{
     }
   })
 })
-router.get('/edit-driver/:id',(req,res)=>{
+router.get('/edit-driver/:id',verifyLogin,(req,res)=>{
   let seller =req.session.seller
   sellerHelpers.driverDetails(req.params.id).then((details)=>{
     res.render('seller/edit-driver',{details,seller})
   })
 })
-
+router.post('/edit-driver',verifyLogin,(req,res)=>{
+  console.log(req.body);
+  sellerHelpers.editdriver(req.body).then((response)=>{
+    if(response.status){
+      req.session.driverupdateresponsemessage = {
+        type: "Success!",
+        message: " Updated successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.redirect('/seller/manage-driver')
+    }else{
+      req.session.driverupdateresponsemessage = {
+        type: "Error!",
+        message: "Something went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+    }
+  })
+})
 
 
 module.exports = router;

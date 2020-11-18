@@ -9,7 +9,12 @@
                     <a class="btn btn-success" href="/seller/driver" style="color: white;">Create Driver</a>
                     <a class="ml-5 btn btn-danger" href="/seller/manage-driver" style="color: white;">Manage Driver </a>
                 </div>
-                
+                 {{#if driverupdateresponsemessage}}
+                <div class="alert alert-succes"
+                    style="color:{{driverupdateresponsemessage.color}};background-color:{{driverupdateresponsemessage.backgroundcolor}}">
+                    <strong>{{driverupdateresponsemessage.type}}</strong> {{driverupdateresponsemessage.message}}
+                </div>
+                {{/if}}
                 <table class="table" style=" background-color: #fff; box-shadow: 3px 1px 7px 1px #888888;">
                     <thead style="background-color: #4e73df; color: white;">
                         <tr>
