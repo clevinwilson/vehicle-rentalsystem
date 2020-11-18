@@ -329,6 +329,13 @@ router.get('/deleteFuel/:id',verifyLogin,(req,res)=>{
     }
   })
 })
+router.get('/edit-driver/:id',(req,res)=>{
+  let seller =req.session.seller
+  sellerHelpers.driverDetails(req.params.id).then((details)=>{
+    res.render('seller/edit-driver',{details,seller})
+  })
+})
+
 
 
 module.exports = router;
