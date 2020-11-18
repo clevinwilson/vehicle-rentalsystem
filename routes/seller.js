@@ -167,8 +167,9 @@ router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let vehicles = await vehicleHelpers.getVehicles(req.session.seller._id)
   console.log(vehicles);
-  res.render('seller/manage-vehicle', { vehicles, seller, "responsemessage": req.session.responsemessage })
+  res.render('seller/manage-vehicle', { vehicles, seller, "responsemessage": req.session.responsemessage,'driverdeleteresponsemessage':req.session.driverdeleteresponsemessage })
   req.session.responsemessage = null
+  req.session.driverdeleteresponsemessage=null
 })
 router.get('/driver', verifyLogin, (req, res) => {
   let seller = req.session.seller
@@ -260,6 +261,7 @@ router.post('/edit-vehicle', (req, res) => {
 
   })
 })
+
 router.get('/deleteVehicle/:vId', (req, res) => {
   vehicleHelpers.deleteVehicle(req.params.vId).then((response) => {
     console.log(response);
@@ -282,12 +284,15 @@ router.get('/deleteVehicle/:vId', (req, res) => {
     }
   })
 })
+
 router.get('/edit-fuel/:id', verifyLogin, (req, res) => {
   let seller = req.session.seller
   vehicleHelpers.editFuel(req.params.id).then((fuel) => {
     res.render('seller/edit-fuel', { fuel, seller})
   })
 })
+
+
 router.post('/edit-fuel',verifyLogin,(req,res)=>{
   console.log(req.body);
   vehicleHelpers.updateFuel(req.body).then((response)=>{
@@ -309,6 +314,8 @@ router.post('/edit-fuel',verifyLogin,(req,res)=>{
    res.redirect('/seller/manage-fueltype')
   })
 })
+
+
 router.get('/deleteFuel/:id',verifyLogin,(req,res)=>{
   vehicleHelpers.deletFuel(req.params.id).then((response)=>{
     if(response){
@@ -354,6 +361,28 @@ router.post('/edit-driver',verifyLogin,(req,res)=>{
         color: "red",
         backgroundcolor: "#e38494"
       }
+    }
+  })
+})
+
+router.get('/deletDriver/:id',(req,res)=>{
+  sellerHelpers.deleteDriver(req.params.id).then((response)=>{
+    if(response){
+      req.session.driverdeleteresponsemessage = {
+        type: "Success!",
+        message: " Deleted successfully",
+        color: "#155724",
+        backgroundcolor: "#d4edda"
+      }
+      res.json({ status: true })
+    }else{
+      req.session.driverdeleteresponsemessage = {
+        type: "Error!",
+        message: "Alredy went wrong",
+        color: "red",
+        backgroundcolor: "#e38494"
+      }
+      res.json({ status: false })
     }
   })
 })

@@ -96,5 +96,12 @@ module.exports={
                 resolve({status:true})
             })
         })
+    },
+    deleteDriver:(driverId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.DRIVER_COLLECTION).removeOne({_id:objectId(driverId)}).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

@@ -60,7 +60,6 @@
 </style>
 <script>
     function deletefuel(fuelId) {
-        let vId = parseInt(fuelId)
         $.ajax({
             url: '/seller/deleteFuel/' + fuelId,
             method: 'get',
