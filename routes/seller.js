@@ -388,4 +388,12 @@ router.get('/deletDriver/:id',(req,res)=>{
 })
 
 
+router.get('/allbookings',verifyLogin,(req,res)=>{
+  let seller=req.session.seller
+  sellerHelpers.getallBookings(req.session.seller._id).then((allbookings)=>{
+    console.log(allbookings);
+    res.render('seller/allbookings',{seller,allbookings})
+  })
+})
+
 module.exports = router;

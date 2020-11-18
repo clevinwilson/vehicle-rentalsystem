@@ -64,7 +64,7 @@ router.get('/userLogout', (req, res) => {
 router.get("/vehicle-details", async (req, res) => {
   let user = req.session.user
 
-  let vehicleDetails = await vehicleHelpers.getvehicleDetails("5fa8f619078b442728ef12ac")
+  let vehicleDetails = await vehicleHelpers.getvehicleDetails("5fb3e527df3e980a1441fbda")
   let vehicles = await vehicleHelpers.getsimilarVehicles()
   res.render('user/vehicle-details', { vehicleDetails, user, vehicles })
 })

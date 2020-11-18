@@ -121,6 +121,9 @@ module.exports = {
     },
     bookNow:(bookingDetails)=>{
         bookingDetails.vehicleId=ObjectID(bookingDetails.vehicleId)
+        bookingDetails.userId=objectId(bookingDetails.userId)
+        bookingDetails.sellerId=objectId(bookingDetails.sellerId)
+        bookingDetails.bookingDate=new Date();
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.BOOKING_COLLECTION).insertOne(bookingDetails).then((response)=>{
                 resolve(resolve)
@@ -131,7 +134,7 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             let userBookings= await db.get().collection(collection.BOOKING_COLLECTION).aggregate([
                 {
-                    $match:{userId:userId}
+                    $match:{userId:objectId(userId)}
                 },
                 {
                     $lookup:{

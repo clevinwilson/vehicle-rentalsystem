@@ -256,9 +256,6 @@
           <form method="post" action="/book" >
             <h5>Fromdate</h5>
             <div class="form-group">
-                <input type="hidden" class="form-control" name="vehicleId" placeholder=" " value="{{vehicleDetails._id}}" >
-               <input type="hidden" class="form-control" name="sellerId" placeholder=" " value="{{vehicleDetails.seller}}" >
-               <input type="hidden" class="form-control" name="userId" placeholder=" " value="{{user._id}}" >
              <input placeholder="Date" class="date form-control hasDatepicker" name="fromdate" id="datepicker" type="Date" value=""  required="" />
             </div>
             <h5>Todate</h5>
@@ -268,6 +265,9 @@
             <div class="form-group">
               <textarea rows="4" class="form-control" name="message" placeholder="Message" ></textarea>
             </div>
+            <input type="hidden" class="form-control" name="vehicleId" placeholder=" " value="{{vehicleDetails._id}}" >
+               <input type="hidden" class="form-control" name="sellerId" placeholder=" " value="{{vehicleDetails.seller}}" >
+               <input type="hidden" class="form-control" name="userId" placeholder=" " value="{{user._id}}" >
 
           {{#if user}}
                  if($result->Status==0){?>
