@@ -136,5 +136,29 @@ module.exports = {
             resolve(allbookings)
         })
 
+    },
+    deliverVehicle: (bookingId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BOOKING_COLLECTION)
+                .updateOne({ _id: objectId(bookingId) },{
+                        $set: {
+                            status: 2
+                        }
+                    }).then((response)=>{
+                        resolve(response)
+                    })
+        })
+    },
+    cancelBooking: (bookingId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.BOOKING_COLLECTION)
+                .updateOne({ _id: objectId(bookingId) },{
+                        $set: {
+                            status: 3
+                        }
+                    }).then((response)=>{
+                        resolve(response)
+                    })
+        })
     }
 }

@@ -392,8 +392,45 @@ router.get('/allbookings',verifyLogin,(req,res)=>{
   let seller=req.session.seller
   sellerHelpers.getallBookings(req.session.seller._id).then((allbookings)=>{
     console.log(allbookings);
+    for (let i = 0; i < allbookings.length; i++) {
+      console.log(allbookings[i].status);
+      if (allbookings[i].status == 1) {
+        allbookings[i].confirmed = true
+      } else if (allbookings[i].status == 2) {
+        allbookings[i].delivered = true
+      } else if (allbookings[i].status == 3) {
+        allbookings[i].cancelled = true
+      } else {
+        console.log("Error");
+      }
+    }
+    console.log(allbookings);
     res.render('seller/allbookings',{seller,allbookings})
   })
 })
+
+router.get('/delivered/:id',verifyLogin,(req,res)=>{
+  sellerHelpers.deliverVehicle(req.params.id).then((response)=>{
+    if(response){
+      res.json({status:true})
+    }else{
+      res.json({status:false})
+    }
+  })
+})
+
+router.get('/cancelBooking/:id',verifyLogin,(req,res)=>{
+  sellerHelpers.cancelBooking(req.params.id).then((response)=>{
+    if(response){
+      res.json({status:true})
+    }else{
+      res.json({status:false})
+    }
+  })
+})
+
+
+
+
 
 module.exports = router;

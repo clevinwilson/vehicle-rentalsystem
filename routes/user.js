@@ -180,14 +180,13 @@ router.post('/book', verifyLogin, (req, res) => {
 router.get('/mybookings', verifyLogin, (req, res) => {
   let user = req.session.user
   userHelpers.getBookings(req.session.user._id).then((bookings) => {
-    console.log(bookings[0]);
     for (let i = 0; i < bookings.length; i++) {
       console.log(bookings[i].status);
       if (bookings[i].status == 1) {
         bookings[i].confirmed = true
       } else if (bookings[i].status == 2) {
         bookings[i].delivered = true
-      } else if (bookings.status == 3) {
+      } else if (bookings[i].status == 3) {
         bookings[i].cancelled = true
       } else {
         console.log("Error");
