@@ -446,6 +446,16 @@ router.get('/changestatus/:id',(req,res)=>{
   })
 })
 
+router.get('/blockbooking/:id',(req,res)=>{
+  vehicleHelpers.blockbooking(req.params.id).then((response)=>{
+    if(response){
+      res.json({status:true})
+    }else{
+      res.json({status:false})
+    }
+  })
+})
+
 
 
 

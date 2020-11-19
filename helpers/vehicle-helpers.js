@@ -157,5 +157,17 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    blockbooking:(vehicleId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.VEHICLES_COLLECTION)
+            .updateOne({_id:objectId(vehicleId)},{
+                $set:{
+                    status:1
+                }
+            }).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

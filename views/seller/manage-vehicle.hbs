@@ -52,7 +52,7 @@
                                 <a onclick="if(confirm('Are you want to Make available {{this.vehiclename}} ?')) changestatus('{{this._id}}')"
                                     style="font-size: 14px; margin-top: 6px;" class="btn btn-dark">Make Available</a>
                                 {{else if this.available}}
-                                <a onclick="if(confirm('Are you want to Make available {{this.vehiclename}} ?')) changestatus('{{this._id}}')"
+                                <a onclick="if(confirm('Do you want to Block booking {{this.vehiclename}} ?')) blockbooking('{{this._id}}')"
                                     style="font-size: 14px; margin-top: 6px;" class="btn btn-dark">Block Booking</a>
                                 {{/if}}
                             </td>
@@ -90,6 +90,18 @@
         let vId = parseInt(vehicleId)
         $.ajax({
             url: '/seller/changestatus/' + vehicleId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                    location.reload()
+                }
+            }
+        })
+    }
+    function blockbooking(vehicleId) {
+        let vId = parseInt(vehicleId)
+        $.ajax({
+            url: '/seller/blockbooking/' + vehicleId,
             method: 'get',
             success: (response) => {
                 if (response.status) {
