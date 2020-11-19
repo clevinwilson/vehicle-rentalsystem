@@ -25,6 +25,7 @@ module.exports = {
             vehiclesdetails.img5 = img5
             vehiclesdetails.date = new Date()
             vehiclesdetails.seller = objectId(sellerId)
+            vehiclesdetails.status=1
             console.log(vehiclesdetails);
             db.get().collection(collection.VEHICLES_COLLECTION).insertOne(vehiclesdetails).then((data) => {
                 resolve(data.ops[0]._id)
@@ -47,7 +48,7 @@ module.exports = {
     },
     getsimilarVehicles:()=>{
         return new Promise(async(resolve,reject)=>{
-            let vehicle=await db.get().collection(collection.VEHICLES_COLLECTION).find().toArray()
+            let vehicle=await db.get().collection(collection.VEHICLES_COLLECTION).find().limit(4).toArray()
             resolve(vehicle)
         })
     },

@@ -1,463 +1,483 @@
-
-
-
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<title>Dream Haulage | Vehicle Details</title>
-<!--Bootstrap -->
-<link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
-<!--Custome Style -->
-<link rel="stylesheet" href="New folder/css/style.css" type="text/css">
-<!--OWL Carousel slider-->
-<link rel="stylesheet" href="New folder/css/owl.carousel.css" type="text/css">
-<link rel="stylesheet" href="New folder/css/owl.transitions.css" type="text/css">
-<!--slick-slider -->
-<link href="/css/slick.css" rel="stylesheet">
-<!--bootstrap-slider -->
-<link href="New folder/css/bootstrap-slider.min.css" rel="stylesheet">
-<!--FontAwesome Font Style -->
-<link href="New folder/css/font-awesome.min.css" rel="stylesheet">
 
-<!-- SWITCHER -->
-		
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="New folder/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="New folder/images/favicon-icon/favicon.png">
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>Dream Haulage | Vehicle Details</title>
+  <!--Bootstrap -->
+  <link rel="stylesheet" href="New folder/css/bootstrap.min.css" type="text/css">
+  <!--Custome Style -->
+  <link rel="stylesheet" href="New folder/css/style.css" type="text/css">
+  <!--OWL Carousel slider-->
+  <link rel="stylesheet" href="New folder/css/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="New folder/css/owl.transitions.css" type="text/css">
+  <!--slick-slider -->
+  <link href="/css/slick.css" rel="stylesheet">
+  <!--bootstrap-slider -->
+  <link href="New folder/css/bootstrap-slider.min.css" rel="stylesheet">
+  <!--FontAwesome Font Style -->
+  <link href="New folder/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- SWITCHER -->
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+    href="New folder/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+    href="New folder/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+    href="New folder/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="New folder/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="New folder/images/favicon-icon/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
+
 <body>
 
- 
-
-<!--Header-->
-{{>user-header}}
-<!-- /Header --> 
-
-<!--Listing-Image-Slider-->
 
 
+  <!--Header-->
+  {{>user-header}}
+  <!-- /Header -->
 
-<section id="listing_img_slider">
-  <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img1}}" class="img-responsive" alt="image" width="900" height="560"></div>
-  <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img2}}" class="img-responsive" alt="image" width="900" height="560"></div>
-  <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img3}}" class="img-responsive" alt="image" width="900" height="560"></div>
-  <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img4}}" class="img-responsive"  alt="image" width="900" height="560"></div>
-  <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img5}}" class="img-responsive" alt="image" width="900" height="560"></div>
-</section>
-<!--/Listing-Image-Slider-->
+  <!--Listing-Image-Slider-->
 
 
-<!--Listing-detail-->
-<section class="listing-detail">
-  <div class="container">
-    <div class="listing_detail_head row">
-      <div class="col-md-9">
-        <h2>{{vehicleDetails.vehiclename}}</h2>
-      </div>
-      <div class="col-md-3">
-        <div class="price_info">
-          <p>₹ {{vehicleDetails.priceperday}}  </p>Per Day
-         
+
+  <section id="listing_img_slider">
+    <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img1}}" class="img-responsive" alt="image"
+        width="900" height="560"></div>
+    <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img2}}" class="img-responsive" alt="image"
+        width="900" height="560"></div>
+    <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img3}}" class="img-responsive" alt="image"
+        width="900" height="560"></div>
+    <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img4}}" class="img-responsive" alt="image"
+        width="900" height="560"></div>
+    <div><img src="/vehicle-images/{{vehicleDetails._id}}{{vehicleDetails.img5}}" class="img-responsive" alt="image"
+        width="900" height="560"></div>
+  </section>
+  <!--/Listing-Image-Slider-->
+
+
+  <!--Listing-detail-->
+  <section class="listing-detail">
+    <div class="container">
+      <div class="listing_detail_head row">
+        <div class="col-md-9">
+          <h2>{{vehicleDetails.vehiclename}}</h2>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-9">
-        <div class="main_features">
-          <ul>
-          
-            <li> <i class="fa fa-calendar" aria-hidden="true"></i>
-              <h5>{{vehicleDetails.modelyear}}</h5>
-              <p>Reg.Year</p>
-            </li>
-            <li> <i class="fa fa-cogs" aria-hidden="true"></i>
-              <h5>FuelType</h5>
-              <p>Fuel Type</p>
-            </li>
-       
-            <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
-              <h5>{{vehicleDetails.seatingcapacity}}</h5>
-              <p>Seats</p>
-            </li>
-          </ul>
-        </div>
-        <div class="listing_more_info">
-          <div class="listing_detail_wrap"> 
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs gray-bg" role="tablist">
-              <li role="presentation" class="active"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab">Vehicle Overview </a></li>
-          
-              <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
-            </ul>
-            
-            <!-- Tab panes -->
-            <div class="tab-content"> 
-              <!-- vehicle-overview -->
-              <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
-                
-                <p>{{vehicleDetails.vehicleoverview}}</p>
-              </div>
-              
-              
-              <!-- Accessories -->
-              <div role="tabpanel" class="tab-pane" id="accessories"> 
-                <!--Accessories-->
-                <table>
-                  <thead>
-                    <tr>
-                      <th colspan="2">Accessories</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Air Conditioner</td>
-{{#if vehicleDetails.autoairconditioner}}
+        <div class="col-md-3">
+          <div class="price_info">
+            <p>₹ {{vehicleDetails.priceperday}} </p>Per Day
 
-    <td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-
-   <td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}</tr>
-
-<tr>
-<td>Brake Assist</td>
-{{#if vehicleDetails.brakeassist}}
-
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-                    </tr>
-
-<tr>
-<td>Passenger Airbag</td>
-{{#if vehicleDetails.passengerairbag}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-                   
-
-<tr>
-
-<td>Central Locking</td>
-
-{{#if vehicleDetails.centrallocking}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-                   
- <tr>
-<td>Panoramic sunroof</td>
-{{#if vehicleDetails.panoramicsunroof}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-<tr>
-<td>Autopilot</td>
-{{#if vehicleDetails.autopilot}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-<tr>
-<td>Power Windows</td>
-{{#if vehicleDetails.powerwindow}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-<tr>
-<td>Crash Sensor</td>
-{{#if vehicleDetails.crashcensor}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
- </tr>
-
-
-<tr>
-<td>AntiLock Braking System</td>
-{{#if vehicleDetails.antilockbrakingsys}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-<tr>
-<td>Driver Airbag</td>
-{{#if vehicleDetails.driverairbag}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
- </tr>
- 
- <tr>
- <td>Touch Screen Multimedia</td>
- {{#if vehicleDetails.touchscreenmultimedia}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-<tr>
-<td>Leather Seats</td>
-{{#if vehicleDetails.leatherseats}}
-<td><i class="fa fa-check" aria-hidden="true"></i></td>
-{{else}}
-<td><i class="fa fa-close" aria-hidden="true"></i></td>
-{{/if}}
-</tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
           </div>
-          
         </div>
-
-   
       </div>
-
-  
-      <!--Side-Bar-->
-      <aside class="col-md-3">
-      
-        <div class="share_vehicle">
-          <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a> </p>
-        </div>
-        <div class="sidebar_widget">
-          <div class="widget_heading">
-            <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
-          </div>
-          <form method="post" action="/book" >
-            <h5>Fromdate</h5>
-            <div class="form-group">
-             <input placeholder="Date" class="date form-control hasDatepicker" name="fromdate" id="datepicker" type="Date" value=""  required="" />
-            </div>
-            <h5>Todate</h5>
-            <div class="form-group">
-             <input placeholder="Date" class="date form-control hasDatepicker" name="todate" id="datepicker" type="Date" value=""  required="" />
-             </div>
-            <div class="form-group">
-              <textarea rows="4" class="form-control" name="message" placeholder="Message" ></textarea>
-            </div>
-            <input type="hidden" class="form-control" name="vehicleId" placeholder=" " value="{{vehicleDetails._id}}" >
-               <input type="hidden" class="form-control" name="sellerId" placeholder=" " value="{{vehicleDetails.seller}}" >
-               <input type="hidden" class="form-control" name="userId" placeholder=" " value="{{user._id}}" >
-
-          {{#if user}}
-                 if($result->Status==0){?>
-              <div class="form-group">
-                <input type="submit" class="btn"   value="Book Now">
-              </div>
-              <?php } else { ?>
-              <div class="form-group">
-                <a class="btn"   style="color:white">Not Available</a>
-              </div>
-           {{/if}}
-<a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal">Login For Book</a>
-
-            
-
-          </form>
-        </div>
-      </aside>
-      <!--/Side-Bar--> 
-    </div>
-    
-    <div class="space-20"></div>
-    <div class="divider"></div>
-    
-    <!--Similar-Cars-->
-    <div class="similar_cars">
-      <h3 class="text-center">Similar Vehicles</h3>
       <div class="row">
-{{#each vehicles}}
+        <div class="col-md-9">
+          <div class="main_features">
+            <ul>
 
-        <div class="col-md-3 mt-2 grid_listing">
-          <div class="product-listing-m gray-bg">
-            <div class="product-listing-img" style="    height: 145px;"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="/vehicle-images/{{this._id}}{{this.img1}}" class="img-responsive" alt="image" /> </a>
-            </div>
-            <div class="product-listing-content">
-              <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">{{this.brandname}} , {{this.vehiclename}}</a></h5>
-              <p class="list-price">₹{{this.priceperday}}</p>
-          
-              <ul class="features_list">
-                
-             <li><i class="fa fa-user" aria-hidden="true"></i>{{this.seatingcapacity}} seats</li>
-                <li><i class="fa fa-calendar" aria-hidden="true"></i>{{this.modelyear}} model</li>
-                <li><i class="fa fa-car" aria-hidden="true"></i>{{this.fuel}}</li>
+              <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+                <h5>{{vehicleDetails.modelyear}}</h5>
+                <p>Reg.Year</p>
+              </li>
+              <li> <i class="fa fa-cogs" aria-hidden="true"></i>
+                <h5>FuelType</h5>
+                <p>Fuel Type</p>
+              </li>
+
+              <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <h5>{{vehicleDetails.seatingcapacity}}</h5>
+                <p>Seats</p>
+              </li>
+            </ul>
+          </div>
+          <div class="listing_more_info">
+            <div class="listing_detail_wrap">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs gray-bg" role="tablist">
+                <li role="presentation" class="active"><a href="#vehicle-overview " aria-controls="vehicle-overview"
+                    role="tab" data-toggle="tab">Vehicle Overview </a></li>
+
+                <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab"
+                    data-toggle="tab">Accessories</a></li>
               </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <!-- vehicle-overview -->
+                <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
+
+                  <p>{{vehicleDetails.vehicleoverview}}</p>
+                </div>
+
+
+                <!-- Accessories -->
+                <div role="tabpanel" class="tab-pane" id="accessories">
+                  <!--Accessories-->
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="2">Accessories</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Air Conditioner</td>
+                        {{#if vehicleDetails.autoairconditioner}}
+
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Brake Assist</td>
+                        {{#if vehicleDetails.brakeassist}}
+
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Passenger Airbag</td>
+                        {{#if vehicleDetails.passengerairbag}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+
+                      <tr>
+
+                        <td>Central Locking</td>
+
+                        {{#if vehicleDetails.centrallocking}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Panoramic sunroof</td>
+                        {{#if vehicleDetails.panoramicsunroof}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Autopilot</td>
+                        {{#if vehicleDetails.autopilot}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Power Windows</td>
+                        {{#if vehicleDetails.powerwindow}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Crash Sensor</td>
+                        {{#if vehicleDetails.crashcensor}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+
+                      <tr>
+                        <td>AntiLock Braking System</td>
+                        {{#if vehicleDetails.antilockbrakingsys}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Driver Airbag</td>
+                        {{#if vehicleDetails.driverairbag}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Touch Screen Multimedia</td>
+                        {{#if vehicleDetails.touchscreenmultimedia}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                      <tr>
+                        <td>Leather Seats</td>
+                        {{#if vehicleDetails.leatherseats}}
+                        <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                        {{else}}
+                        <td><i class="fa fa-close" aria-hidden="true"></i></td>
+                        {{/if}}
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!--Side-Bar-->
+        <aside class="col-md-3">
+
+          <div class="share_vehicle">
+            <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i
+                  class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-linkedin-square"
+                  aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus-square"
+                  aria-hidden="true"></i></a> </p>
+          </div>
+          <div class="sidebar_widget">
+            <div class="widget_heading">
+              <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
+            </div>
+            <form method="post" action="/book">
+              <h5>Fromdate</h5>
+              <div class="form-group">
+                <input placeholder="Date" class="date form-control hasDatepicker" name="fromdate" id="datepicker"
+                  type="Date" value="" required="" />
+              </div>
+              <h5>Todate</h5>
+              <div class="form-group">
+                <input placeholder="Date" class="date form-control hasDatepicker" name="todate" id="datepicker"
+                  type="Date" value="" required="" />
+              </div>
+              <div class="form-group">
+                <textarea rows="4" class="form-control" name="message" placeholder="Message"></textarea>
+              </div>
+              <input type="hidden" class="form-control" name="vehicleId" placeholder=" " value="{{vehicleDetails._id}}">
+              <input type="hidden" class="form-control" name="sellerId" placeholder=" "
+                value="{{vehicleDetails.seller}}">
+              <input type="hidden" class="form-control" name="userId" placeholder=" " value="{{user._id}}">
+
+              {{#if user}}
+              {{#if vehicleDetails.available}}
+              <div class="form-group">
+                <input type="submit" class="btn" value="Book Now">
+              </div>
+              {{else if vehicleDetails.booked}}
+              <div class="form-group">
+                <a class="btn" style="color:white">Not Available</a>
+              </div>
+              {{else}}
+              <div class="form-group">
+                <a class="btn" style="color:white">Error</a>
+              </div>
+              {{/if}}
+              {{else}}
+              <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-target="#exampleModal"
+                data-dismiss="modal">Login For Book</a>
+              {{/if}}
+
+
+            </form>
+          </div>
+        </aside>
+        <!--/Side-Bar-->
+      </div>
+
+      <div class="space-20"></div>
+      <div class="divider"></div>
+
+      <!--Similar-Cars-->
+      <div class="similar_cars">
+        <h3 class="text-center">Similar Vehicles</h3>
+        <div class="row">
+          {{#each vehicles}}
+
+          <div class="col-md-3 mt-2 grid_listing">
+            <div class="product-listing-m gray-bg">
+              <div class="product-listing-img" style="    height: 145px;"> <a
+                  href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img
+                    src="/vehicle-images/{{this._id}}{{this.img1}}" class="img-responsive" alt="image" /> </a>
+              </div>
+              <div class="product-listing-content">
+                <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">{{this.brandname}} ,
+                    {{this.vehiclename}}</a></h5>
+                <p class="list-price">₹{{this.priceperday}}</p>
+
+                <ul class="features_list">
+
+                  <li><i class="fa fa-user" aria-hidden="true"></i>{{this.seatingcapacity}} seats</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i>{{this.modelyear}} model</li>
+                  <li><i class="fa fa-car" aria-hidden="true"></i>{{this.fuel}}</li>
+                </ul>
+              </div>
             </div>
           </div>
+          {{/each}}
+
         </div>
-{{/each}}    
+      </div>
+      <!--/Similar-Cars-->
+
+    </div>
+  </section>
+  <!--/Listing-detail-->
+
+  <!--Footer -->
+  {{>user-footer}}
+  <!-- /Footer-->
+
+  <!--Back to top-->
+  <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+  <!--/Back to top-->
+  <!-- Modal login -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 130px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body video">
+          <div class="signin-form profile">
+            <div class="login-m_page">
+              <h2 align="center">Dream Haulage </h2>
+
+              <h3 class="sign">Log In</h3>
+              <div class="login-form">
+                <form action="/userlogin" method="post">
+                  <input class="form-control" type="text" name="name" placeholder="Name" required="">
+                  <input class="form-control" type="password" name="password" placeholder="Password" required="">
+                  <div class="tp">
+                    <input class="form-control" type="submit" value="Log In">
+                  </div>
+                </form>
+              </div>
+
+              <p>
+                <a href="#" data-toggle="modal" data-target="#exampleModal2" style="color: red; "> Don't
+                  have an account?</a>
+              </p>
+            </div>
+
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--//model-->
+  <!-- Modal join  -->
+
+
+
+
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 130px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body video">
+          <div class="signin-form profile">
+            <div class="login-m_page">
+              <h3 class="sign">Join</h3>
+              <div class="login-form">
+                <form action="" id="submit-form" method="post">
+                  <div class="form-group">
+                    {{#if smess}}
+                    <span id="user-availability-status" style="font-size:12px;">{{smess.mess}}</span>
+                    {{/if}}
+                    <input class="form-control" type="text" name="name" id="username" onBlur="isUserExist()"
+                      placeholder="Name" required="">
+                  </div>
+                  <span style="color: green;" id="check_availability_username" style="font-size:12px;"></span>
+                  <span style="color:red;" id="check_not_username" style="font-size:12px;"></span>
+
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email" onBlur="checkAvailability()"
+                      placeholder="Email Address" required="required">
+                    <span id="user-availability-status" style="font-size:12px;"></span>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="address" placeholder="Address" required="">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="contactno" placeholder="Contactno" required="">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" name="password" id="password1" placeholder="Password"
+                      required="">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" id="password2" placeholder="Confirm Password"
+                      required="">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="submit" id="signupsubmit" value="Join">
+                  </div>
+                </form>
+              </div>
+              <p>
+                <a href="#"> By clicking Join, I agree to your terms</a>
+              </p>
+            </div>
+
+
+          </div>
+
+
+        </div>
 
       </div>
     </div>
-    <!--/Similar-Cars--> 
-    
   </div>
-</section>
-<!--/Listing-detail--> 
+  <!--//model-->
 
-<!--Footer -->
-{{>user-footer}}
-<!-- /Footer--> 
-
-<!--Back to top-->
-<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-<!--/Back to top--> 
- <!-- Modal login -->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true"
-        style="padding-top: 130px;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body video">
-                    <div class="signin-form profile">
-                        <div class="login-m_page">
-                            <h2 align="center">Dream Haulage </h2>
-
-                            <h3 class="sign">Log In</h3>
-                            <div class="login-form">
-                                <form action="/userlogin" method="post">
-                                    <input class="form-control" type="text" name="name" placeholder="Name" required="">
-                                    <input class="form-control" type="password" name="password" placeholder="Password"
-                                        required="">
-                                    <div class="tp">
-                                        <input class="form-control" type="submit" value="Log In" >
-                                    </div>
-                                </form>
-                            </div>
-
-                            <p>
-                                <a href="#" data-toggle="modal" data-target="#exampleModal2" style="color: red; "> Don't
-                                    have an account?</a>
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//model-->
-    <!-- Modal join  -->
-   
-
-    
-
-    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true"
-        style="padding-top: 130px;">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body video">
-                    <div class="signin-form profile">
-                        <div class="login-m_page">
-                            <h3 class="sign">Join</h3>
-                            <div class="login-form">
-                                <form action="" id="submit-form" method="post">
-                                    <div class="form-group">
-                                        {{#if smess}}
-                                        <span id="user-availability-status" style="font-size:12px;">{{smess.mess}}</span>
-                                        {{/if}}
-                                        <input class="form-control" type="text"  name="name" id="username"
-                                            onBlur="isUserExist()" placeholder="Name" required="">
-                                    </div>
-                                    <span style="color: green;" id="check_availability_username" style="font-size:12px;"></span>
-                                    <span style="color:red;" id="check_not_username" style="font-size:12px;"></span>
-
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            onBlur="checkAvailability()" placeholder="Email Address"
-                                            required="required">
-                                        <span id="user-availability-status" style="font-size:12px;"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="address" placeholder="Address"
-                                            required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="contactno" placeholder="Contactno"
-                                            required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="password" name="password" id="password1"
-                                            placeholder="Password" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="password" id="password2"
-                                            placeholder="Confirm Password" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="submit" id="signupsubmit" value="Join" >
-                                    </div>
-                                </form>
-                            </div>
-                            <p>
-                                <a href="#"> By clicking Join, I agree to your terms</a>
-                            </p>
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--//model-->
-
-<script src="New folder/js/jquery.min.js"></script>
-<script src="New folder/js/bootstrap.min.js"></script> 
-<script src="New folder/js/interface.js"></script> 
-<script src="New folder/switcher/js/switcher.js"></script>
-<script src="New folder/js/bootstrap-slider.min.js"></script> 
-<script src="New folder/js/slick.min.js"></script> 
-<script src="New folder/js/owl.carousel.min.js"></script>
+  <script src="New folder/js/jquery.min.js"></script>
+  <script src="New folder/js/bootstrap.min.js"></script>
+  <script src="New folder/js/interface.js"></script>
+  <script src="New folder/switcher/js/switcher.js"></script>
+  <script src="New folder/js/bootstrap-slider.min.js"></script>
+  <script src="New folder/js/slick.min.js"></script>
+  <script src="New folder/js/owl.carousel.min.js"></script>
 
 </body>
+
 </html>

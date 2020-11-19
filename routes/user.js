@@ -66,6 +66,13 @@ router.get("/vehicle-details", async (req, res) => {
   let user = req.session.user
 
   let vehicleDetails = await vehicleHelpers.getvehicleDetails("5fb3e527df3e980a1441fbda")
+ 
+  if(vehicleDetails.status == 1){
+    vehicleDetails.booked=true
+  }else if(vehicleDetails.status ==2){
+    vehicleDetails.available=true
+  }
+  console.log(vehicleDetails);
   let vehicles = await vehicleHelpers.getsimilarVehicles()
   res.render('user/vehicle-details', { vehicleDetails, user, vehicles })
 })
