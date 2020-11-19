@@ -154,5 +154,13 @@ module.exports = {
             ]).toArray()
             resolve(userBookings)
         })
+    },
+    feedBack:(feedBack,userId)=>{
+        feedBack.userId=objectId(userId)
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.FEEDBACK_COLLECTION).insertOne(feedBack).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

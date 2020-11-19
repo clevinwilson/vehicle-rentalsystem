@@ -1,5 +1,6 @@
 const { response } = require('express');
 var express = require('express');
+const { ObjectId } = require('mongodb');
 var router = express.Router();
 var userHelpers = require('../helpers/user-helpers')
 var vehicleHelpers = require('../helpers/vehicle-helpers')
@@ -201,6 +202,23 @@ router.get('/mybookings', verifyLogin, (req, res) => {
   })
 
 })
+
+router.post('/userfeedback',(req,res)=>{
+  let userId=req.session.user._id
+  if (req.session.loggedIn) {
+    userHelpers.feedBack(req.body,userId).then((response)=>{
+      if(response){
+        res.json({status:true})
+      }else{
+        res.json({status:false})
+      }
+    })
+  } else {
+    res.json({status:false})
+  }
+  
+})
+
 
 
 module.exports = router;

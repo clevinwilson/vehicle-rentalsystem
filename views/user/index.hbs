@@ -806,3 +806,25 @@
         }
     </script>
     </html>
+
+
+    <script>
+    $("#feedback").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: "/userfeedback",
+            data: $("#feedback").serialize(),
+            method: "post",
+            success: function (response) {
+                if (response.status) {
+                    alert("Submited")
+                    window.location.reload()
+                }else{
+                    alert('Pleas login')
+                }
+            }
+        })
+    })
+
+    
+</script>
