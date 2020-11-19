@@ -71,6 +71,13 @@ router.get('/reg-sellers',verifyLogin,(req,res)=>{
 
   })
 })
+router.get('/feedback',verifyLogin,(req,res)=>{
+  let admin=req.session.admin
+  adminHelpers.getFeedbacks().then((feedbacks)=>{
+    console.log(feedbacks,'feedddd');
+    res.render('admin/view-feedback',{feedbacks,admin})
+  })
+})
 
 
 module.exports = router;

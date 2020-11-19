@@ -55,5 +55,26 @@ module.exports = {
                 resolve(sellers)
             })
         })
+    },
+    getFeedbacks:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.FEEDBACK_COLLECTION).aggregate([
+                {
+                    $lookup:{
+                        from:collection.USER_COLLECTION,
+                        localField:'userId',
+                        foreignField:'_id',
+                        as:'user'
+                    }
+                },
+                {
+                    $project:{
+                        message:1,user:{$arrayElemAt:['$user',0]}
+                    }
+                }
+            ]).toArray().then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }
