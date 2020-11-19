@@ -24,6 +24,7 @@
                             <th scope="col">Brand Name</th>
                             <th scope="col">Price per day</th>
                             <th scope="col">Posted date</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -35,11 +36,25 @@
                             <td class="text-uppercase ">{{this.brandname}}</td>
                             <td class="text-uppercase ">{{this.date}}</td>
                             <td class="text-uppercase ">{{this.priceperday}}</td>
+                            {{#if this.notavailable}}
+                            <td class="text-uppercase " style="color: red;">Not Available</td>
+                            {{else if this.available}}
+                            <td class="text-uppercase " style="color: green;"> Available</td>
+                            {{else}}
+                            <td class="text-uppercase " style="color: red;">Error</td>
+                            {{/if}}
                             <td style="color: white; width: 144px;">
                                 <a href="/seller/edit-vehicle/{{this._id}}" style="font-size: 14px;"
                                     class="btn btn-info">Edit</a>
                                 <a class="btn btn-danger" style="font-size: 14px;"
                                     onclick="if(confirm('Are you want to delete {{this.vehiclename}} ?')) deleteVehicle('{{this._id}}')  ">Delete</a>
+                                {{#if this.notavailable}}
+                                <a onclick="if(confirm('Are you want to Make available {{this.vehiclename}} ?')) changestatus('{{this._id}}')"
+                                    style="font-size: 14px; margin-top: 6px;" class="btn btn-dark">Make Available</a>
+                                {{else if this.available}}
+                                <a onclick="if(confirm('Are you want to Make available {{this.vehiclename}} ?')) changestatus('{{this._id}}')"
+                                    style="font-size: 14px; margin-top: 6px;" class="btn btn-dark">Block Booking</a>
+                                {{/if}}
                             </td>
                         </tr>
                         {{/each}}
@@ -66,7 +81,19 @@
             method: 'get',
             success: (response) => {
                 if (response.status) {
-                   location.reload()
+                    location.reload()
+                }
+            }
+        })
+    }
+    function changestatus(vehicleId) {
+        let vId = parseInt(vehicleId)
+        $.ajax({
+            url: '/seller/changestatus/' + vehicleId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                    location.reload()
                 }
             }
         })

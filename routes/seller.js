@@ -167,6 +167,13 @@ router.get('/manage-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   let vehicles = await vehicleHelpers.getVehicles(req.session.seller._id)
   console.log(vehicles);
+  for(let i=0;i<vehicles.length;i++ ){
+    if(vehicles[i].status==1){
+      vehicles[i].notavailable=true
+    }else if(vehicles[i].status == 0){
+      vehicles[i].available=true
+    }
+  }
   res.render('seller/manage-vehicle', { vehicles, seller, "responsemessage": req.session.responsemessage,'driverdeleteresponsemessage':req.session.driverdeleteresponsemessage })
   req.session.responsemessage = null
   req.session.driverdeleteresponsemessage=null
@@ -421,6 +428,16 @@ router.get('/delivered/:id',verifyLogin,(req,res)=>{
 
 router.get('/cancelBooking/:id',verifyLogin,(req,res)=>{
   sellerHelpers.cancelBooking(req.params.id).then((response)=>{
+    if(response){
+      res.json({status:true})
+    }else{
+      res.json({status:false})
+    }
+  })
+})
+
+router.get('/changestatus/:id',(req,res)=>{
+  vehicleHelpers.changestatus(req.params.id).then((response)=>{
     if(response){
       res.json({status:true})
     }else{

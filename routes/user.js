@@ -69,7 +69,7 @@ router.get("/vehicle-details", async (req, res) => {
  
   if(vehicleDetails.status == 1){
     vehicleDetails.booked=true
-  }else if(vehicleDetails.status ==2){
+  }else if(vehicleDetails.status == 0){
     vehicleDetails.available=true
   }
   console.log(vehicleDetails);

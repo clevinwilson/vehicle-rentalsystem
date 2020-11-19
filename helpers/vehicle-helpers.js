@@ -145,5 +145,17 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    changestatus:(vehicleId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.VEHICLES_COLLECTION)
+            .updateOne({_id:objectId(vehicleId)},{
+                $set:{
+                    status:0
+                }
+            }).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }
