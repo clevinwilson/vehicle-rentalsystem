@@ -98,12 +98,12 @@
 
           <div class="col-md-6 col-sm-8">
             <div class="profile_wrap">
-              <h5 class="uppercase underline">My Bookings </h5>
+              <h5 class="uppercase underline mb-3" style="text-decoration: none;">My Bookings </h5>
               <div class="my_vehicles_list">
                 <ul class="vehicle_listing">
 
                   {{#each bookings}}
-                  <li>
+                  <li style="    border-radius: 12px;background-color: #e5e9eb;padding: 11px;">
                     <div class="vehicle_img"> <a
                         href="vehical-details.php?vhid=<?php echo htmlentities($result->vid);?>"><img
                           src="/vehicle-images/{{this.vehicles._id}}{{this.vehicles.img1}}" alt="image"></a> </div>
