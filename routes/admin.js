@@ -13,10 +13,13 @@ const verifyLogin =(req,res,next)=>{
 router.get('/', function(req, res, next) {
   res.render('admin/admin-login')
 });
-router.get('/dashboard',verifyLogin,(req,res)=>{
+router.get('/dashboard',verifyLogin,async(req,res)=>{
   let admin=req.session.admin
-  console.log(admin);
-  res.render('admin/dashboard',{admin})
+  let sellercount=await adminHelpers.getSellersCount()
+  let usercount=await adminHelpers.getUserCount()
+  let bookingcount=await adminHelpers.getBookingsCount()
+  let vehiclescount=await adminHelpers.getVehiclesCount()
+  res.render('admin/dashboard',{admin,sellercount,usercount,bookingcount,vehiclescount})
 })
 router.post('/adminlogin',(req,res)=>{
   console.log(req.body);
@@ -27,8 +30,14 @@ router.post('/adminlogin',(req,res)=>{
       res.redirect('/admin/dashboard')
     }
   })
-  
 })
+
+router.get('/dashboard',verifyLogin,(req,res)=>{
+  let seller=req.session.seller
+  res.render('admin/dashboard',{seller})
+})
+
+
 router.get('/create-category',verifyLogin,(req,res)=>{
   let admin=req.session.admin
   res.render('admin/create-category',{admin,"responsemessage":req.session.responsemessage})

@@ -33,6 +33,7 @@ router.post('/sellersignup', (req, res) => {
 
   })
 })
+
 router.post('/sellerlogin', (req, res) => {
   console.log(req.body);
   sellerHelpers.sellerLogin(req.body).then((response) => {
@@ -46,6 +47,7 @@ router.post('/sellerlogin', (req, res) => {
     }
   })
 })
+
 let smess = {}
 router.get('/create-fuel-type', verifyLogin, (req, res) => {
   let seller = req.session.seller
@@ -53,6 +55,11 @@ router.get('/create-fuel-type', verifyLogin, (req, res) => {
   res.render('seller/create-fuel-type', { seller, smess })
 
 
+})
+
+router.get('/dashboard',verifyLogin,(req,res)=>{
+  let seller=req.session.seller
+  res.render('seller/dashboard',{seller})
 })
 
 router.post('/add-fuel', verifyLogin, (req, res) => {

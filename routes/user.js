@@ -24,6 +24,7 @@ router.get('/about', function (req, res, next) {
   let user = req.session.user
   res.render('user/about', { user });
 });
+
 router.post('/usersignup', (req, res) => {
   console.log(req.body,);
   userHelpers.doSignup(req.body).then((response) => {
@@ -37,12 +38,14 @@ router.post('/usersignup', (req, res) => {
   })
 
 })
+
 router.get('/isuserexist/:user', (req, res) => {
   userHelpers.isUserExist(req.params.user).then((response) => {
     console.log(response);
     res.json(response)
   })
 })
+
 router.post('/userlogin', (req, res) => {
   userHelpers.userLogin(req.body).then((response) => {
     if (response.status) {
@@ -57,10 +60,12 @@ router.post('/userlogin', (req, res) => {
   })
 
 })
+
 router.get('/userLogout', (req, res) => {
   req.session.destroy()
   res.redirect('/')
 })
+
 
 router.get("/vehicle-details", async (req, res) => {
   let user = req.session.user

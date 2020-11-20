@@ -100,5 +100,33 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    getSellersCount:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.SELLER_COLLECTION).count().then((count)=>{
+                resolve(count)
+            })
+        })
+    },
+    getUserCount:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).count().then((count)=>{
+                resolve(count)
+            })
+        })
+    },
+    getBookingsCount:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.BOOKING_COLLECTION).count().then((count)=>{
+                resolve(count)
+            })
+        })
+    },
+    getVehiclesCount:()=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.VEHICLES_COLLECTION).count().then((count)=>{
+                resolve(count)
+            })
+        })
     }
 }
