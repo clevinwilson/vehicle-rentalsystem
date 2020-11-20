@@ -69,9 +69,9 @@ module.exports = {
             })
         })
     },
-    getDriver: () => {
+    getDriver: (sellerId) => {
         return new Promise(async (resolve, reject) => {
-            let drivers = await db.get().collection(collection.DRIVER_COLLECTION).find().toArray()
+            let drivers = await db.get().collection(collection.DRIVER_COLLECTION).find({sellerId:sellerId}).toArray()
             resolve(drivers)
         })
     },

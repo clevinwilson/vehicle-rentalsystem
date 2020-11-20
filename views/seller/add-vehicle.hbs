@@ -43,13 +43,13 @@
                                 placeholder="Price Per day">
                         </div>
                         <div class="form-group col-12 col-md-5 ">
-                            <label for="cars">Fuel type</label><br>
+                            <label for="cars">Vehicle  type</label><br>
                             <select 
                                 style="color: #fff;background-color:#3cc0d3;border-color: #36b9cc;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="fueltype" name="fueltype">
+                                name="vehicletype" id='main_select' onchange='show_select()'>
                                 <option style="font-size: 14px;" value="">Select</option>
-                                {{#each fuel}}
-                                <option style="font-size: 14px;" name="fuel" value="{{this.fuelname}}">{{this.fuelname}}</option>
+                                {{#each categorys}}
+                                <option style="font-size: 14px;" name="fuel" value="{{this.category}}">{{this.category}}</option>
                                 {{/each}}
                             </select>
 
@@ -64,29 +64,38 @@
                             <input style="border-color:#b4e3eb;" type="text" class="form-control " id="seatingcapacity" name="seatingcapacity"
                                 placeholder="Seating Capacity">
                         </div>
-                        <div class="form-group  col-md-7 ">
-                            <label for="busdriver">Bus Driver</label><br>
+                        <div class="form-group col-12 col-md-5 ">
+                            <label for="cars">Fuel type</label><br>
                             <select 
-                                style="color: #fff;background-color: #f6c23e;border-color: #f6c23e;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="busdriver" name="busdriver">
-                                <option style="  font-size: 14px;" value="">Select</option>
-                                <option style="font-size: 14px;" value="petrol">Petrol</option>
-                                <option style="font-size: 14px;" value="diesel">Diesel</option>
-                                <option style="font-size: 14px;" value="electric">Electric</option>
-                                <option style="font-size: 14px;" value="cng">CNG</option>
+                                style="color: #fff;background-color:#3cc0d3;border-color: #36b9cc;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id="fueltype" name="fueltype">
+                                <option style="font-size: 14px;" value="">Select</option>
+                                {{#each fuel}}
+                                <option style="font-size: 14px;" name="fuel" value="{{this.fuelname}}">{{this.fuelname}}</option>
+                                {{/each}}
                             </select>
 
                         </div>
                         <div class="form-group  col-md-5 ">
-                            <label for="cartype">Car Type</label><br>
+                            <label for="busdriver" id='lab_1' style='display:none'>Bus Driver</label><br>
+                            <select 
+                                style="display:none; color: #fff;background-color: #f6c23e;border-color: #f6c23e;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                name="drivername" id='select_1'>
+                                <option style="  font-size: 14px;" value="">Select</option>
+                                {{#each drivers}}
+                                <option style="font-size: 14px;" value="{{this.drivername}}">{{this.drivername}}</option>
+                                {{/each}}
+                            </select>
+
+                        </div>
+                        <div class="form-group  col-md-5 ">
+                            <label for="cartype" id="lab_2" style="display: none;">Car Type</label><br>
                             <select
-                                style="color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
-                                id="cartype" name="cartype">
+                                style="display:none; color: #fff;background-color: #777f88;border-color: #4e555b;border-radius: 3px;font-size: 17px;padding: 6px;"
+                                id='select_2'  name="cartype">
                                 <option style="font-size: 14px;" value="">Select</option>
-                                <option style="font-size: 14px;" value="petrol">Petrol</option>
-                                <option style="font-size: 14px;" value="diesel">Diesel</option>
-                                <option style="font-size: 14px;" value="electric">Electric</option>
-                                <option style="font-size: 14px;" value="cng">CNG</option>
+                                <option style="font-size: 14px;" value="luxury">Luxury</option>
+                                <option style="font-size: 14px;" value="noneluxury">None Luxury</option>
                             </select>
 
                         </div>
@@ -216,3 +225,32 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+function show_select()
+{
+  var main_select = document.getElementById("main_select");
+  var select_1 = document.getElementById("select_1");
+  var select_2 = document.getElementById("select_2");
+
+  var desired_box = main_select.options[main_select.selectedIndex].value;
+  if(desired_box == "Bus") {
+    select_1.style.display = '';
+    select_2.style.display = 'none';
+     lab_2.style.display='none';
+     lab_1.style.display='';
+  }
+  else if(desired_box=="Car") {
+    select_2.style.display = '';
+    lab_2.style.display='';
+    select_1.style.display = 'none';
+    lab_1.style.display='none';
+  }else{
+      select_1.style.display = 'none';
+    lab_1.style.display='none';
+    select_2.style.display = 'none';
+     lab_2.style.display='none';
+  }
+
+}
+</script>

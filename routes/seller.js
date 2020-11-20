@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var sellerHelpers = require('../helpers/seller-helpers')
 var vehicleHelpers = require('../helpers/vehicle-helpers')
+var adminHelpers=require('../helpers/admin-helpers')
 const verifyLogin = (req, res, next) => {
   if (req.session.loggedIn) {
     next()
@@ -85,9 +86,10 @@ router.get('/manage-fueltype', verifyLogin, (req, res) => {
 
 router.get('/add-vehicle', verifyLogin, async (req, res) => {
   let seller = req.session.seller
+  let categorys=await adminHelpers.getCategory()
   let fuel = await vehicleHelpers.getfuel()
-  console.log(fuel);
-  res.render('seller/add-vehicle', { seller, fuel, smess, "addvehicleresponsemessage": req.session.addvehicleresponsemessage })
+  let drivers = await sellerHelpers.getDriver(req.session.seller._id)
+  res.render('seller/add-vehicle', { seller,categorys, fuel,drivers, smess, "addvehicleresponsemessage": req.session.addvehicleresponsemessage })
   req.session.addvehicleresponsemessage = null
 })
 
@@ -184,28 +186,33 @@ router.get('/driver', verifyLogin, (req, res) => {
 })
 
 router.post('/add-driver', verifyLogin, (req, res) => {
-  console.log(req.body);
+  req.body.sellerId=req.session.seller._id
   sellerHelpers.adddriver(req.body).then((response) => {
-
-  })
-  smess.mess = "Driver created successfully"
+    smess.mess = "Driver created successfully"
   res.redirect('/seller/driver')
+  })
 })
+
+
 router.get('/manage-driver', verifyLogin, async (req, res) => {
   let seller = req.session.seller
-  let drivers = await sellerHelpers.getDriver()
-  console.log(drivers);
+  let drivers = await sellerHelpers.getDriver(req.session.seller._id)
   res.render('seller/manage-driver', { seller, drivers,"driverupdateresponsemessage":req.session.driverupdateresponsemessage })
   req.session.driverupdateresponsemessage=null
 })
+
+
 router.get('/edit-vehicle/:id', verifyLogin, async (req, res) => {
   let seller = req.session.seller
   console.log(req.params.id);
   let fuel = await vehicleHelpers.getfuel()
+  let drivers = await sellerHelpers.getDriver(req.session.seller._id)
   let vehicle = await vehicleHelpers.getvehicleDetails(req.params.id)
   console.log(vehicle, "lllll");
-  res.render('seller/edit-vehicle', { seller, vehicle, fuel })
+  res.render('seller/edit-vehicle', { seller, vehicle, fuel,drivers })
 })
+
+
 router.post('/edit-vehicle', (req, res) => {
   console.log(req.body);
   vehicleHelpers.editVehicle(req.body, req.files.Image1.name, req.files.Image2.name, req.files.Image3.name, req.files.Image4.name, req.files.Image5.name).then((response) => {
