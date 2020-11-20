@@ -78,6 +78,18 @@ router.get('/feedback',verifyLogin,(req,res)=>{
     res.render('admin/view-feedback',{feedbacks,admin})
   })
 })
+router.get('/editcategory/:id',verifyLogin,(req,res)=>{
+  let admin=req.session.admin
+  adminHelpers.getCategoryById(req.params.id).then((category)=>{
+    res.render('admin/edit-category',{category,admin})
+  })
+})
+
+router.post('/editcategory',(req,res)=>{
+  adminHelpers.editCategory(req.body).then((response)=>{
+    res.render('/admin/manage-category')
+  })
+})
 
 
 module.exports = router;

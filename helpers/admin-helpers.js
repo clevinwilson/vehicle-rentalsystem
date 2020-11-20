@@ -76,5 +76,22 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    getCategoryById:(categoryId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CATEGORY_COLLECTION).findOne({_id:objectId(categoryId)}).then((response)=>{
+                resolve(response)
+            })
+        })
+    },
+    editCategory:(category)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CATEGORY_COLLECTION)
+            .updateOne({_id:objectId(category.id)},{
+                $set:{
+                    category:category.categoryname
+                }
+            })
+        })
     }
 }
