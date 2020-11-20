@@ -93,5 +93,12 @@ module.exports = {
                 }
             })
         })
+    },
+    deleteCategory:(categoryId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CATEGORY_COLLECTION).removeOne({_id:objectId(categoryId)}).then((response)=>{
+                resolve(response)
+            })
+        })
     }
 }

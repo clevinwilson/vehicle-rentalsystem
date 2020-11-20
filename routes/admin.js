@@ -91,5 +91,16 @@ router.post('/editcategory',(req,res)=>{
   })
 })
 
+router.get('/deleteCategory/:id',(req,res)=>{
+  adminHelpers.deleteCategory(req.params.id).then((response)=>{
+    if(response){
+      res.json({status:true})
+    }else{
+      res.json({status:false})
+    }
+  })
+  
+})
+
 
 module.exports = router;
