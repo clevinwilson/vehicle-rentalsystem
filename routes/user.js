@@ -70,7 +70,7 @@ router.get('/userLogout', (req, res) => {
 router.get("/vehicle-details", async (req, res) => {
   let user = req.session.user
 
-  let vehicleDetails = await vehicleHelpers.getvehicleDetails("5fb3e527df3e980a1441fbda")
+  let vehicleDetails = await vehicleHelpers.getvehicleDetails("5fb8f808fdbec213c8613e9a")
  
   if(vehicleDetails.status == 1){
     vehicleDetails.booked=true
@@ -183,12 +183,16 @@ router.get('/rating', verifyLogin, (req, res) => {
   let user = req.session.user
   res.render('user/rating', { user })
 })
-router.post('/book', verifyLogin, (req, res) => {
+router.post('/book', verifyLogin, async(req, res) => {
   req.body.status = 1
   console.log(req.body);
-  userHelpers.bookNow(req.body).then((response) => {
-    res.redirect('/vehicle-details')
-  })
+  let vehicle=await vehicleHelpers.getvehicleDetails(req.body.vehicleId)
+  if(vehicle){
+    userHelpers.bookNow(req.body).then((response) => {
+      res.redirect('/vehicle-details')
+    })
+  }
+
 })
 router.get('/mybookings', verifyLogin, (req, res) => {
   let user = req.session.user
